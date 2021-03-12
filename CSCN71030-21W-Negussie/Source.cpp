@@ -21,8 +21,8 @@ int main(void){
 	Customer longCustomer(longFName, longFName, INT_MAX);
 	Customer Hanan(firstName,lastName,24);
 	Customer Hanadi(secondFirstName,secondLastName, 25);
-	Hanan.printCustomer(); //print out Hanan
-	Hanadi.printCustomer(); // print out Weirdo
+	Hanan.print(); //print out Hanan
+	Hanadi.print(); // print out Weirdo
 	string noNameFile{ "Testing" };
 	string textFile{ "Testing.txt" };
 	ofstream out(textFile);
