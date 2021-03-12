@@ -143,11 +143,13 @@
     <ClCompile Include="SaveLoad.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="SaveLoad.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
