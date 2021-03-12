@@ -12,7 +12,7 @@ Customer::Customer(char* firstName, char* lastName, int age) {
 	this->age = age;
 }
 
-void Customer::printCustomer(void)
+void Customer::print(void)
 {
 	cout << "Customer Name is " << this->firstName << " " << this->lastName << " and their age is " << this->age << endl;
 }
