@@ -2,11 +2,14 @@
 
 template <typename T>
 class Node {
+private:
 	T* nodeData;
-	//Node* prevNode;
 	Node* nextNode;
 public:
 	Node(T* nodeData);
-	//Node* getPrevNode();
 	Node* getNextNode();
+	void setNextNode(Node* node);
+	T* getNodeData();
 };
+
+

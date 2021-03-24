@@ -6,6 +6,10 @@ CSCN7103021W-Negussie
 
 #include <iostream>
 #include "Customer.h"
+#include "Lists.h"
+#include "Lists.cpp"
+#include "Node.cpp"
+#include "SaveLoad.h"
 
 using namespace std;
 
@@ -32,6 +36,18 @@ int main(void){
 	Hanan.load(in);
 	in.close();
 
+	Customer* newCustomer = new Customer(firstName, lastName, 24);
+	Customer* newCustomer1 = new Customer(secondFirstName, secondLastName, 25);
+	Lists<Customer> customers;
+	customers.addToList(newCustomer);
+	customers.addToList(newCustomer1);
 
+	customers.save("Jacky.txt");
+	
+	customers.peekHead()->print();
+	Lists<Customer> customersL1;
+	customersL1.load("Jacky.txt");
+	customersL1.peekHead()->print();
+	customersL1.save("Amanuel.txt");
 	return 0;
 }
