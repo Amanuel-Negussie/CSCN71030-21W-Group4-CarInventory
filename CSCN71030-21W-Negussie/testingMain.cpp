@@ -20,9 +20,41 @@ int main(void) {
 	cout << myInventory.getLabel() << endl;
 	cout << myInventory.getPrice() << endl;
 	cout << myInventory.getCost() << endl;
+	cout << endl << endl;
+
+	char newMake[MAX_LEN] = "Tesla";
+	char newModel[MAX_LEN] = "Model 3";
+	char newVIN[MAX_LEN] = "D4E5F6";
+
+	Inventory newInventory(newMake, newModel, newVIN, Sedan, 59999, 45999);
+	newInventory.printInventory();
 	
+	cout << endl << endl;
+	cout << newInventory.getMake() << endl;
+	cout << newInventory.getModel() << endl;
+	cout << newInventory.getVIN() << endl;
+	cout << newInventory.getLabel() << endl;
+	cout << newInventory.getPrice() << endl;
+	cout << newInventory.getCost() << endl;
+	cout << endl << endl;
+
+	char newMakeUpdate[MAX_LEN] = "Mazda";
+	char newModelUpdate[MAX_LEN] = "CX-7";
+	char newVINUpdate[MAX_LEN] = "AAA111";
+
+	newInventory.setMake(newMakeUpdate);
+	newInventory.setModel(newModelUpdate);
+	newInventory.setVIN(newVINUpdate);
+	newInventory.setLabel(Crossover);
+	newInventory.setPrice(17999);
+	newInventory.setCost(15999);
+
+	newInventory.printInventory();
+
+
 	return 0;
 
 }
+
 
 

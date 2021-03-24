@@ -128,7 +128,7 @@ void Inventory::load(ifstream& in) {
 
 void Inventory::labelToString(LABEL label) {
 
-
+	cout << "Type: ";
 
 	switch (label)
 	{
