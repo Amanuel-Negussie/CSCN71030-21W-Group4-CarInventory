@@ -17,11 +17,13 @@ private:
 
 public:
 	Customer();
-	Customer(char* firstName, char* lastName, int age); 
+	Customer(char firstName [FIRST_NAME_LEN], char lastName [LAST_NAME_LEN], int age);
+	~Customer();
 	//print
 	void printCustomer(void);
 	void save(ofstream& out) override;
 	void load(ifstream& in) override;
+
 	//save and load 
 };
 

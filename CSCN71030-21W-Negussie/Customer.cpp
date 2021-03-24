@@ -1,12 +1,21 @@
 #include "Customer.h"
-
+/*
 Customer::Customer() {
 	strncpy_s(this->firstName, " ", FIRST_NAME_LEN);
-	strncpy_s(this->lastName, " ", LAST_NAME_LEN); 
-	this->age = -1; 
+	strncpy_s(this->lastName, " ", LAST_NAME_LEN);
+	this->age = -1;
+}
+*/
+
+
+Customer::Customer() :firstName(""), lastName(""), age(-1) {
 }
 
-Customer::Customer(char* firstName, char* lastName, int age) {
+Customer::~Customer()
+{
+}
+
+Customer::Customer(char firstName [FIRST_NAME_LEN], char lastName [LAST_NAME_LEN], int age) {
 	strcpy_s(this->firstName, FIRST_NAME_LEN, firstName);
 	strcpy_s(this->lastName, LAST_NAME_LEN, lastName);
 	this->age = age;

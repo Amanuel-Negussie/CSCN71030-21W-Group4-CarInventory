@@ -11,8 +11,8 @@ using namespace std;
 
 
 int main(void){
-	char firstName[] = "Hanan";
-	char lastName[] = "Mohammed";
+	char firstName[FIRST_NAME_LEN] = "Hanan";
+	char lastName[LAST_NAME_LEN] = "Mohammed";
 	char secondFirstName[] = "WEiRDO";
 	char secondLastName[] = "BOOGER";
 	char longFName[] = "12345678901234567890123456789";
