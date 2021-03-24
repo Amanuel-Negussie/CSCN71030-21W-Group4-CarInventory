@@ -4,11 +4,11 @@ Inventory::Inventory():make("Unset"), model("Unset"), VIN("Unset"), label(Unset)
 
 }
 
-Inventory::Inventory(string make, string model, string VIN, LABEL label, int price, int cost) { //Parameterize
+Inventory::Inventory(char make[MAX_LEN], char model[MAX_LEN], char VIN[MAX_LEN], LABEL label, int price, int cost) { //Parameterize
 
-	this->make = make;
-	this->model = model;
-	this->VIN = VIN;
+	strcpy_s(this->make, MAX_LEN, make);
+	strcpy_s(this->model, MAX_LEN, model);
+	strcpy_s(this->VIN, MAX_LEN, VIN);	
 	this->label = label;
 	this->price = price;
 	this->cost = cost;
@@ -17,9 +17,9 @@ Inventory::Inventory(string make, string model, string VIN, LABEL label, int pri
 
 Inventory::Inventory(Inventory& copyObject) { //Copy constructor
 
-	this->make = copyObject.make;
-	this->model = copyObject.model;
-	this->VIN = copyObject.VIN;
+	strcpy_s(this->make, MAX_LEN, copyObject.make);
+	strcpy_s(this->model, MAX_LEN, copyObject.model);
+	strcpy_s(this->VIN, MAX_LEN, copyObject.VIN);
 	this->label = copyObject.label;
 	this->price = copyObject.price;
 	this->cost = copyObject.cost;
@@ -28,43 +28,43 @@ Inventory::Inventory(Inventory& copyObject) { //Copy constructor
 
 Inventory::~Inventory() { //Destructor
 
-	delete this; //Nothing allocated on the heap. Does this clear the item from memory still?
+
 
 }
 
-string Inventory::getMake(void) {
+char* Inventory::getMake(void) {
 
 	return this->make;
 
 }
 
-void Inventory::setMake(string make) {
+void Inventory::setMake(char make[MAX_LEN]) {
 
-	this->make = make;
+	strcpy_s(this->make, MAX_LEN, make);
 
 }
 
-string Inventory::getModel(void) {
+char* Inventory::getModel(void) {
 
 	return this->model;
 
 }
 
-void Inventory::setModel(string model) {
+void Inventory::setModel(char model[MAX_LEN]) {
 
-	this->model = model;
+	strcpy_s(this->model, MAX_LEN, model);
 
 }
 
-string Inventory::getVIN(void) {
+char* Inventory::getVIN(void) {
 
 	return this->VIN;
 
 }
 
-void Inventory::setVIN(string VIN) {
+void Inventory::setVIN(char VIN[MAX_LEN]) {
 
-	this->VIN = VIN;
+	strcpy_s(this->VIN, MAX_LEN, VIN);
 
 }
 
@@ -108,7 +108,7 @@ void Inventory::printInventory(void) {
 	cout << "Make: " << this->make << endl;
 	cout << "Model: " << this->model << endl;
 	cout << "VIN: " << this->VIN << endl;
-	cout << "Label: " << this->label << endl;
+	labelToString(this->label);
 	cout << "Price: " << this->price << endl;
 	cout << "Cost: " << this->cost << endl;
 
@@ -123,5 +123,50 @@ void Inventory::save(ofstream& out) {
 void Inventory::load(ifstream& in) {
 	
 	LOAD(this, sizeof(*this), in);
+
+}
+
+void Inventory::labelToString(LABEL label) {
+
+
+
+	switch (label)
+	{
+
+	case Unset: 
+
+		cout << "Unset" <<endl;
+		break;
+
+	case Sedan:
+
+		cout << "Sedan" << endl;
+		break;
+
+	case SUV:
+
+		cout << "SUV" << endl;
+		break;
+
+	case Truck:
+
+		cout << "Truck" << endl;
+		break;
+
+	case Crossover:
+
+		cout << "Crossover" << endl;
+		break;
+
+	case RV:
+
+		cout << "RV" << endl;
+		break;
+
+	default:
+
+		break;
+
+	}
 
 }

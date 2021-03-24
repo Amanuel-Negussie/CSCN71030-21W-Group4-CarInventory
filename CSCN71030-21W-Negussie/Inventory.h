@@ -3,6 +3,8 @@
 #include <string>
 #include "SaveLoad.h"
 
+#define MAX_LEN 30
+
 using namespace std;
 
 typedef enum label { Unset, Sedan, SUV, Truck, Crossover, RV } LABEL;
@@ -11,9 +13,9 @@ class Inventory : public SAVELOAD {
 
 private:
 
-	string make;
-	string model;
-	string VIN;
+	char make[MAX_LEN];
+	char model[MAX_LEN];
+	char VIN[MAX_LEN];
 	LABEL label;
 	int price;
 	int cost;
@@ -21,15 +23,15 @@ private:
 public:
 
 	Inventory();
-	Inventory(string, string, string, LABEL, int, int);//Parameterize
+	Inventory(char[MAX_LEN], char[MAX_LEN], char[MAX_LEN], LABEL, int, int);//Parameterize
 	Inventory(Inventory&);//Copy constructor
 	~Inventory();//Destructor
-	string getMake(void);
-	void setMake(string make);
-	string getModel(void);
-	void setModel(string model);
-	string getVIN(void);
-	void setVIN(string VIN);
+	char* getMake(void);
+	void setMake(char[MAX_LEN]);
+	char* getModel(void);
+	void setModel(char[MAX_LEN]);
+	char* getVIN(void);
+	void setVIN(char[MAX_LEN]);
 	LABEL getLabel(void);
 	void setLabel(LABEL label);
 	int getPrice(void);
@@ -39,5 +41,7 @@ public:
 	void printInventory(void);
 	void save(ofstream& out) override;
 	void load(ifstream& in) override;
+
+	void labelToString(LABEL);
 
 };
