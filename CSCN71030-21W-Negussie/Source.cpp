@@ -17,7 +17,7 @@ int main(void){
 	char secondLastName[] = "BOOGER";
 	char longFName[] = "12345678901234567890123456789";
 
-	
+	Customer loser;
 	Customer longCustomer(longFName, longFName, INT_MAX);
 	Customer Hanan(firstName,lastName,24);
 	Customer Hanadi(secondFirstName,secondLastName, 25);

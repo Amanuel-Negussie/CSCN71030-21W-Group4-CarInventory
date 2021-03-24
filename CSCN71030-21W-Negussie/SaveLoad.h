@@ -1,6 +1,8 @@
-#pragma once
+a#pragma once
 #include <string>
 #include <fstream>
+
+
 using namespace std;
 
 void SAVE(void* addressOfObject, const int sizeOfClass,ofstream& in);
@@ -12,11 +14,7 @@ public:
 	virtual void load(ifstream& out) = 0;
 };
 
-class SAVELOAD {
-public:
-	virtual void save(ofstream& in) = 0;
-	virtual void load(ifstream& out) = 0;
-};
+
 
 
 

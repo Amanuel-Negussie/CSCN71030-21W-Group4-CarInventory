@@ -1,8 +1,8 @@
 #include "Customer.h"
 
 Customer::Customer() {
-	strncpy_s(this->firstName,"12345678901234567890123456789", FIRST_NAME_LEN); 
-	strncpy_s(this->lastName, "12345678901234567890123456789", LAST_NAME_LEN); 
+	strncpy_s(this->firstName, " ", FIRST_NAME_LEN);
+	strncpy_s(this->lastName, " ", LAST_NAME_LEN); 
 	this->age = -1; 
 }
 
