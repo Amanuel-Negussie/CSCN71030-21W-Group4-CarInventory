@@ -37,8 +37,7 @@ public:
 	int getCost(void);
 	void setCost(int cost);
 	void printInventory(void);
-
-	//save
-	//load
+	void save(ofstream& out) override;
+	void load(ifstream& in) override;
 
 };

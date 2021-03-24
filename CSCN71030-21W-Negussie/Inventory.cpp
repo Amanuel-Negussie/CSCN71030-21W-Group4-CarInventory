@@ -1,13 +1,6 @@
 #include "Inventory.h"
 
-Inventory::Inventory() {
-
-	this->make = "Unset";
-	this->model = "Unset";
-	this->VIN = "Unset";
-	this->label = Unset;
-	this->price = 0;
-	this->cost = 0;
+Inventory::Inventory():make("Unset"), model("Unset"), VIN("Unset"), label(Unset), price(0), cost(0) {
 
 }
 
@@ -121,5 +114,14 @@ void Inventory::printInventory(void) {
 
 }
 
-//Inventory::save
-//Inventory::load
+void Inventory::save(ofstream& out) {
+	
+	SAVE(this, sizeof(*this), out);
+
+}
+
+void Inventory::load(ifstream& in) {
+	
+	LOAD(this, sizeof(*this), in);
+
+}
