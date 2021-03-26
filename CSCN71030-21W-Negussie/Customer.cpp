@@ -11,6 +11,11 @@ Customer::Customer() {
 Customer::Customer() :firstName(""), lastName(""), age(-1) {
 }
 
+Customer::Customer(const Customer& copyObject) {
+	strcpy_s(this->firstName, FIRST_NAME_LEN, copyObject.firstName);
+	strcpy_s(this->lastName, LAST_NAME_LEN, copyObject.lastName);
+	this->age = copyObject.age;
+}
 Customer::~Customer()
 {
 }
@@ -21,6 +26,30 @@ Customer::Customer(char firstName [FIRST_NAME_LEN], char lastName [LAST_NAME_LEN
 	this->age = age;
 }
 
+//setters and getters
+//getters and setters 
+char* Customer:: getFirstName(void) {
+	return this->firstName;
+}
+char* Customer::getLastName(void) {
+	return this->lastName;
+}
+int Customer:: getAge(void) {
+	return this->age;
+}
+
+void Customer::setFirstName(char firstName[FIRST_NAME_LEN]) {
+	strcpy_s(this->firstName, FIRST_NAME_LEN, firstName);
+}
+void Customer::setLastName(char lastName[LAST_NAME_LEN]) {
+	strcpy_s(this->lastName, LAST_NAME_LEN, lastName);
+}
+void Customer::setAge(int age) {
+	this->age = age;
+}
+
+
+//print and save and load functions//
 void Customer::printCustomer(void)
 {
 	cout << "Customer Name is " << this->firstName << " " << this->lastName << " and their age is " << this->age << endl;

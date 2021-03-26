@@ -18,9 +18,22 @@ private:
 public:
 	Customer();
 	Customer(char firstName [FIRST_NAME_LEN], char lastName [LAST_NAME_LEN], int age);
+	Customer(const Customer& copyObject); 
 	~Customer();
+
+
+	//getters and setters 
+	char* getFirstName(void); 
+	char* getLastName(void); 
+	int getAge(void); 
+	
+	void setFirstName(char firstName[FIRST_NAME_LEN]);
+	void setLastName(char lastName[LAST_NAME_LEN]); 
+	void setAge(int age); 
 	//print
 	void printCustomer(void);
+
+	//save and load
 	void save(ofstream& out) override;
 	void load(ifstream& in) override;
 

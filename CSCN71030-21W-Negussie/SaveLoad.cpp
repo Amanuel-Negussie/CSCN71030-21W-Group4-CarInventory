@@ -1,7 +1,5 @@
 #include "SaveLoad.h"
 
-
-
 void SAVE(void* addressOfObject, const int sizeOfClass, ofstream& out)
 {
 	out.write(reinterpret_cast<char*>(addressOfObject), sizeOfClass); //write 
