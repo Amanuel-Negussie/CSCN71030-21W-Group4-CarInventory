@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SaveLoad.h"
+
 #include <iostream>
 
 using namespace std;
@@ -12,7 +14,7 @@ using namespace std;
 
 enum userType { ADM, MNG, SAL, UNSET };
 
-class Users
+class Users: public SAVELOAD
 {
 protected:
 
@@ -34,6 +36,10 @@ public:
 	void changeUserId(char ID[MAX_LEN]);	
 
 	void addArray();
+
+	void save(ofstream& out) override;
+
+	void load(ifstream& in) override;
 
 
 };
@@ -85,6 +91,7 @@ void displayArray();;
 
 
 bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN]);
+
 
 
 

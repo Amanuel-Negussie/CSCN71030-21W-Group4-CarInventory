@@ -47,6 +47,18 @@ void Users::addArray()
 	}
 }
 
+void Users::save(ofstream& out) {
+
+	SAVE(this, sizeof(*this), out);
+
+}
+
+void Users::load(ifstream& in) {
+
+	LOAD(this, sizeof(*this), in);
+
+}
+
 
 
 Admin::Admin()
@@ -184,3 +196,6 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN])
 
 	return false;
 }
+
+
+
