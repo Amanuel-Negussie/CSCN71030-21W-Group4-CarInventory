@@ -10,6 +10,8 @@ public:
 	Node* getNextNode();
 	void setNextNode(Node* node);
 	T* getNodeData();
+	void deleteNode();
+	~Node();
 };
 
 

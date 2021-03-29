@@ -26,10 +26,29 @@ void Lists<T>::addToList(T* object)
 	}
 }
 
+/*
+template<class T>
+void Lists<T>::removeFromList(T* object) {
+	if (object == head->getNodeData) {
+		Node<T>* temp = head;
+		head = head->getNextNode;
+		delete temp;
+	}
+	else if (object == tail->getNodeData){
+		Node<T>* temp = tail;
+
+	}
+		
+}*/
 
 template <class T>
 bool Lists<T>::isListEmpty() {
 	return (head == NULL && tail == NULL);
+}
+
+template <class T>
+void Lists<T>::deleteList() {
+	delete this;
 }
 
 /*
@@ -51,6 +70,18 @@ template <class T>
 T* Lists<T>::peekHead() {
 	return head->getNodeData();
 }
+
+template <class T>
+Lists<T>::~Lists() {
+	delete head;
+	delete tail;
+	delete lastVisited;
+}
+
+
+
+
+
 
 template<class T>
 void Lists<T>::save(string file)

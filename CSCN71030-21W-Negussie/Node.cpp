@@ -22,3 +22,14 @@ template<typename T>
 T* Node<T>::getNodeData() {
 	return nodeData;
 }
+
+template<typename T>
+void Node<T>::deleteNode() {
+	delete this;
+}
+
+template<typename T>
+Node<T>::~Node() {
+	this->nextNode = NULL;
+	delete this->nodeData;
+}

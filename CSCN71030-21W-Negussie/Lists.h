@@ -14,11 +14,21 @@ private:
 public:
 
 	Lists();
-	void addToList(T* object);
+	void addToList(T* object);		//Add an item to the end of a list
+	
+	bool isListEmpty();				//Check if a list is empty
+	void deleteList();				//delete a list
+	T* peekHead();					//Return data from head
+
+	//Waiting to be implemented
+	void insertToList(T* insertObject, T* targetObject);	//Insert an item to middle of a list
+	void removeFromList(T* object);	//Remove an item from anywhere of a list
+
+
+	~Lists();
+	//File I/O
 	void save(string File);
 	void load(string file);
-	bool isListEmpty();
-	T* peekHead();
 };
 
 
