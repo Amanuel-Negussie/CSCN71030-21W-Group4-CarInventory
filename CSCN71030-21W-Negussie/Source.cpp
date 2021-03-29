@@ -10,6 +10,9 @@ CSCN7103021W-Negussie
 #include "Lists.cpp"
 #include "Node.cpp"
 #include "SaveLoad.h"
+#include "Validation.h"
+
+#define STRLEN_MAX 30
 
 using namespace std;
 
@@ -49,5 +52,12 @@ int main(void){
 	customersL1.load("Jacky.txt");
 	customersL1.peekHead()->print();
 	customersL1.save("Amanuel.txt");
+
+	string s("123456789012345678901234567890123456789012345678901234567890");
+	string t("Hello YOU GUYS");
+	char myCharArray[STRLEN_MAX];
+	stringToCharArray(s, myCharArray,STRLEN_MAX);
+	stringToCharArray(t, myCharArray, STRLEN_MAX);
+
 	return 0;
 }

@@ -2,7 +2,7 @@
 
 bool doesStringOnlyContain(const string& s, unsigned int DataType)
 {
-	int strLen = s.length();
+	int strLen = (int)s.length();
 	unsigned int stringContains = 0;
 	for (int i = 0; i < strLen; i++)
 	{
@@ -21,4 +21,20 @@ bool doesStringOnlyContain(const string& s, unsigned int DataType)
 
 	}
 	return stringContains & DataType;
+}
+
+
+
+bool  stringToCharArray(const string& source, char dest[], const unsigned int targetLength)
+{
+
+	if (!isInputValid(source, targetLength))
+		return false;
+	return (!strcpy_s(dest, targetLength, source.c_str()));
+
+}
+
+bool isInputValid(const string& s, const unsigned int targetLength)
+{
+	return (s.length() < targetLength);
 }

@@ -13,3 +13,10 @@ enum DataType {
 
 bool doesStringOnlyContain(const string& s, unsigned int DataType);
 
+
+bool isInputValid(const string& s, const unsigned int targetLength);
+
+bool  stringToCharArray(const string& source, char dest[], const unsigned int targetLength);
+
+
+
