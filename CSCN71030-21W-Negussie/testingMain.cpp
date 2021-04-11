@@ -76,7 +76,6 @@ int main(void) {
 	// USER: Jacky Password Jack123 
 
 	char* myArray[10][2];
-	char myArray[10][2][30];
 	memset(myArray, NULL, 20 * sizeof(char*));
 	char myName[30] = "amanuel";
 	myArray[0][0] = myName;
