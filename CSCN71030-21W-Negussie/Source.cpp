@@ -8,14 +8,14 @@ CSCN7103021W-Negussie
 using namespace std;
 
 
-//int main(void) {
+int main(void) {
 
 
 
 
 
-//	return 0;
-//}
+	return 0;
+}
 
 
 
