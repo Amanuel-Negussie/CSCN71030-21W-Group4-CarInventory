@@ -143,6 +143,7 @@
     <ClCompile Include="SaveLoad.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="testingMain.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>

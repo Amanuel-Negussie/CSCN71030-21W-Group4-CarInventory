@@ -65,11 +65,6 @@ void Customer::load(ifstream& in)
 	LOAD(this, sizeof(*this), in);
 }
 
-
-
-
-
-
 /*
 
 void write(const std::string& file_name, s& data)
@@ -77,6 +72,7 @@ void write(const std::string& file_name, s& data)
 	std::ofstream out(file_name.c_str());
 	out.write(reinterpret_cast<char*>(&s), sizeof(s));
 }
+
 
 referenced from: https://forums.codeguru.com/showthread.php?269648-C-Structure-How-do-I-write-a-structure-to-a-file
 
