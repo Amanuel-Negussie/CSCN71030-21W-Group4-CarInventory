@@ -34,7 +34,7 @@ int main(void){
 	EmptyCustomer.printCustomer();
 	//Expectations: Contents of John Doe object that was saved to Customer.txt file will
 	//				be placed into Empty Customer object. Validated by contents printed out Empty Customer print call
-
+	
 	
 
 

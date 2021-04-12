@@ -13,7 +13,7 @@ using namespace std;
 
 #include "Users.h"
 
-
+/*
 int main()
 {
 	initializeElementsUserArray();
@@ -56,7 +56,7 @@ int main()
 
 
 	b.displayUser();
-	
+
 	Maaz.displayUser();
 
 	d.displayUser();
@@ -71,7 +71,7 @@ int main()
 	b.changeUsername(fnamechanged);
 
 	b.displayUser();
-		
+
 	//Check to see if the username and password are the same as what is saved in the 2d array
 
 	if (verifyCredentials(fnamechanged, pass))
@@ -83,10 +83,11 @@ int main()
 		cout << "\nIncorrect username or password!\n" << endl;
 	}
 
-	
+
 	//Display array to make sure that the usersa are being added correctly
 
 	displayArray();
 
 	return 0;
 }
+*/
