@@ -8,7 +8,8 @@ Customer::Customer() {
 */
 
 
-Customer::Customer() :firstName(""), lastName(""), age(-1) {
+Customer::Customer() :firstName("Unset"), lastName("Unset"), age(-1) {
+
 }
 
 Customer::Customer(const Customer& copyObject) {
