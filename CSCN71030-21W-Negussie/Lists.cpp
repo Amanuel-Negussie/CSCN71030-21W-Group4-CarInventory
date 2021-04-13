@@ -11,6 +11,7 @@ Lists<T>::Lists() {
 	head = NULL;
 	tail = NULL;
 	lastVisited = NULL;
+	NumOfItems = 0;
 }
 
 template<class T>
@@ -24,6 +25,7 @@ void Lists<T>::addToList(T* object)
 		tail->setNextNode(newNode);
 		tail = newNode;
 	}
+	NumOfItems++;
 }
 
 template<class T>
@@ -49,6 +51,12 @@ void Lists<T>::removeFromList(int nthItem) {
 		temp->setNextNode(target->getNextNode());
 		target->deleteNode();
 	}
+	NumOfItems--;
+}
+
+template <class T>
+int Lists<T>::getNumOfItems() {
+	return NumOfItems;
 }
 
 template <class T>

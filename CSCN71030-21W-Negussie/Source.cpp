@@ -66,7 +66,7 @@ int main(void){
 	}
 
 	Node<int>* temp = intLists.getHeadOfList();
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < intLists.getNumOfItems(); i++) {
 		
 		int* output = temp->getNodeData();
 		cout << *output << endl;
@@ -75,7 +75,7 @@ int main(void){
 	
 	intLists.removeFromList(5);
 	temp = intLists.getHeadOfList();
-	for (int i = 1; i <= 9; i++) {
+	for (int i = 1; i <= intLists.getNumOfItems(); i++) {
 
 		int* output = temp->getNodeData();
 		cout << *output << endl;
