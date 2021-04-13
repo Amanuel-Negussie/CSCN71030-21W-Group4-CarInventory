@@ -28,11 +28,23 @@ TransactionHistory::~TransactionHistory() {
 
 void TransactionHistory::printTransaction(void) {
 
-	cout << "Transaction ID: " << this->transactionID << endl;
+	cout <<"\nTransaction ID: " << this->transactionID << endl;
 	this->inventory->printInventory();
 	this->customer->printCustomer();
 	this->user->displayUser();
 	cout << endl;
+
+}
+
+void TransactionHistory::save(ofstream& out) {
+
+	SAVE(this, sizeof(*this), out);
+
+}
+
+void TransactionHistory::load(ifstream& in) {
+
+	LOAD(this, sizeof(*this), in);
 
 }
 

@@ -25,6 +25,9 @@ public:
 	TransactionHistory(TransactionHistory&);
 	~TransactionHistory();
 	
+	void save(ofstream& out) override;
+	void load(ifstream& in) override;
+
 	void printTransaction(void);
 
 

@@ -12,6 +12,7 @@ CSCN7103021W-Negussie
 #include "Lists.h"
 #include "Node.cpp"
 #include "Lists.cpp"
+#include "TransactionHistory.h"
 
 
 using namespace std;
@@ -160,6 +161,13 @@ int main(void){
     myInventoryList.addToList(&myInventory);
     //PASSED 
 
+     //---------------------------------------------------------------------
+   //Testing Integration for Transaction History with Customer
+   //---------------------------------------------------------------------
+   //INV-TH-001 CUS-TH-001 USR-TH-001
+    TransactionHistory myTransactionHistory(firstName, newInventory, newCustomer, newUser);
+    myTransactionHistory.printTransaction();
+    //PASSED 
 
   
 
