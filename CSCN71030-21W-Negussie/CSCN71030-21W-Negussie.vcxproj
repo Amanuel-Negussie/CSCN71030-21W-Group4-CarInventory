@@ -140,14 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="SaveLoad.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="testingMain.cpp" />
     <ClCompile Include="Users.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="SaveLoad.h" />
     <ClInclude Include="Users.h" />
