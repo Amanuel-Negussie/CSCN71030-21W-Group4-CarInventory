@@ -9,13 +9,17 @@ CSCN7103021W-Negussie
 #include "SaveLoad.h"
 #include "Users.h"
 #include "Inventory.h"
+#include "Lists.h"
+#include "Node.cpp"
+#include "Lists.cpp"
+
 
 using namespace std;
 
 
 int main(void){
     //---------------------------------------------------------------------
-	//Testing Integration for Save/Load Customer
+	//Testing Integration for Customer and Save/Load
     //---------------------------------------------------------------------
 	//CUS-SVLD-001 
 	char firstName[] = "John";
@@ -123,9 +127,37 @@ int main(void){
     emptyInventory.printInventory();
     //Expectations: Contents of myInventory object that was saved to Inventory.txt file will
     //				be placed into Empty Inventory object. Validated by contents printed out
-    //Results: PASSED
+    //Results: PASSED 
+
+   //---------------------------------------------------------------------
+   //Testing Integration for Customer and List
+   //---------------------------------------------------------------------
+   
+    //CUS-LST-001
+    Lists<Customer> myCustomerList;
+    Customer* newCustomer = new Customer(firstName,lastName,30);
+    myCustomerList.addToList(newCustomer);
+    // PASSED with Bugs 4/13/2021 5:54pm ->RAISED ISSUE
+    // 
+
+   //---------------------------------------------------------------------
+   //Testing Integration for User and List
+   //---------------------------------------------------------------------
+
+    //USR-LST-001
+   // Lists<Users> myUserList;
+  //  myUserList.addToList(&Eazaz);
 
     //---------------------------------------------------------------------
+   //Testing Integration for Inventory and List
+   //---------------------------------------------------------------------
+   
+   //INV-LST-001
+    //Lists<Inventory> myInventoryList;
+   // myInventoryList.addToList(&myInventory);
+
+
+  
 
 	return 0;
 }

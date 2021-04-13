@@ -17,8 +17,10 @@ Customer::Customer(const Customer& copyObject) {
 	strcpy_s(this->lastName, LAST_NAME_LEN, copyObject.lastName);
 	this->age = copyObject.age;
 }
+
 Customer::~Customer()
 {
+	
 }
 
 Customer::Customer(char firstName[FIRST_NAME_LEN], char lastName[LAST_NAME_LEN], int age) {
