@@ -43,12 +43,12 @@ T* Lists<T>::peekHead() {
 	return head->getNodeData();
 }
 
-template <class T>
-Lists<T>::~Lists() {
-	delete head;
-	delete tail;
-	delete lastVisited;
-}
+//template <class T>
+//Lists<T>::~Lists() {
+//	delete head;
+//	delete tail;
+//	delete lastVisited;
+//}
 
 
 

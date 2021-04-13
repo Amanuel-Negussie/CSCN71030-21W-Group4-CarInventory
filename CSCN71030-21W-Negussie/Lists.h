@@ -25,7 +25,7 @@ public:
 	void removeFromList(T* object);	//Remove an item from anywhere of a list
 
 
-	~Lists();
+	//~Lists();
 
 	//File I/O
 	void save(string File);

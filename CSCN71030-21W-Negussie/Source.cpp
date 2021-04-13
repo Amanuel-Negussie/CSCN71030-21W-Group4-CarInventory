@@ -138,23 +138,27 @@ int main(void){
     Customer* newCustomer = new Customer(firstName,lastName,30);
     myCustomerList.addToList(newCustomer);
     // PASSED with Bugs 4/13/2021 5:54pm ->RAISED ISSUE
-    // 
+    // PASSED 4/13/2021 
 
    //---------------------------------------------------------------------
    //Testing Integration for User and List
    //---------------------------------------------------------------------
 
     //USR-LST-001
-   // Lists<Users> myUserList;
-  //  myUserList.addToList(&Eazaz);
-
+   Lists<Users> myUserList;
+   Users* newUser = new Admin(username, password, userID);
+   myUserList.addToList(newUser);
+   //PASSED 
+   
     //---------------------------------------------------------------------
    //Testing Integration for Inventory and List
    //---------------------------------------------------------------------
    
    //INV-LST-001
-    //Lists<Inventory> myInventoryList;
-   // myInventoryList.addToList(&myInventory);
+    Lists<Inventory> myInventoryList;
+    Inventory* newInventory = new Inventory(myMake, myModel, myVIN, SUV, 25999, 19999);
+    myInventoryList.addToList(&myInventory);
+    //PASSED 
 
 
   
