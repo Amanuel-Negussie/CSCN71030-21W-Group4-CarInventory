@@ -59,5 +59,28 @@ int main(void){
 	stringToCharArray(s, myCharArray,STRLEN_MAX);
 	stringToCharArray(t, myCharArray, STRLEN_MAX);
 
+	Lists<int> intLists;
+	for (int i = 1; i <= 10; i++) {
+		int* newInt = new int(i);
+		intLists.addToList(newInt);
+	}
+
+	Node<int>* temp = intLists.getHeadOfList();
+	for (int i = 0; i < 10; i++) {
+		
+		int* output = temp->getNodeData();
+		cout << *output << endl;
+		temp = temp->getNextNode();
+	}
+	
+	intLists.removeFromList(5);
+	temp = intLists.getHeadOfList();
+	for (int i = 1; i <= 9; i++) {
+
+		int* output = temp->getNodeData();
+		cout << *output << endl;
+		temp = temp->getNextNode();
+	}
+
 	return 0;
 }

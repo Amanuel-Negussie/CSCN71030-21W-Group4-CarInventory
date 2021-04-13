@@ -26,20 +26,30 @@ void Lists<T>::addToList(T* object)
 	}
 }
 
-/*
 template<class T>
-void Lists<T>::removeFromList(T* object) {
-	if (object == head->getNodeData) {
-		Node<T>* temp = head;
-		head = head->getNextNode;
-		delete temp;
+void Lists<T>::removeFromList(int nthItem) {
+	if (isListEmpty()) {
+		return;
 	}
-	else if (object == tail->getNodeData){
-		Node<T>* temp = tail;
 
+	Node<T>* temp = head;
+	if (nthItem == 1) {
+		head = NULL;
+		temp->deleteNode();
 	}
-		
-}*/
+	else {
+		for (int i = 1; i < nthItem-1; i++) {
+			temp = temp->getNextNode();
+
+			if (temp == NULL) {
+				return;
+			}
+		}
+		Node<T>* target = temp->getNextNode();
+		temp->setNextNode(target->getNextNode());
+		target->deleteNode();
+	}
+}
 
 template <class T>
 bool Lists<T>::isListEmpty() {
@@ -69,6 +79,11 @@ void Lists<T>::save(void* func(T*),string file) {
 template <class T>
 T* Lists<T>::peekHead() {
 	return head->getNodeData();
+}
+
+template <class T>
+Node<T>* Lists<T>::getHeadOfList() {
+	return head;
 }
 
 template <class T>
