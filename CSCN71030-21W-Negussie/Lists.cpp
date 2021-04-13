@@ -30,7 +30,7 @@ void Lists<T>::addToList(T* object)
 
 template<class T>
 void Lists<T>::removeFromList(int nthItem) {
-	if (isListEmpty()) {
+	if (nthItem <= 0 || nthItem > NumOfItems) {
 		return;
 	}
 

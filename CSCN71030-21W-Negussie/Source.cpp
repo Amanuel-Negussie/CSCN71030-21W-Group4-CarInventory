@@ -73,7 +73,7 @@ int main(void){
 		temp = temp->getNextNode();
 	}
 	
-	intLists.removeFromList(5);
+	intLists.removeFromList(-1);
 	temp = intLists.getHeadOfList();
 	for (int i = 1; i <= intLists.getNumOfItems(); i++) {
 
