@@ -28,11 +28,11 @@ int main(void){
 	//CUS-SVLD-002 
 	ifstream  inputFile("Customer.txt"); //ifstream with file name 
 	Customer EmptyCustomer; //Empty Customer created
-	printf("BEFORE LOAD:\n");
+	printf("\nBEFORE LOAD:\n");
 	EmptyCustomer.printCustomer(); //printing Customer prior to file load 
 	EmptyCustomer.load(inputFile); //load object info from file into Customer object
 	inputFile.close();
-	printf("AFTER LOAD:\n");
+	printf("\nAFTER LOAD:\n");
 	EmptyCustomer.printCustomer();
 	//Expectations: Contents of John Doe object that was saved to Customer.txt file will
 	//				be placed into Empty Customer object. Validated by contents printed out Empty Customer print call
@@ -70,7 +70,7 @@ int main(void){
     //Create empty object to load User object from "Users.txt" file into
     Admin EazazLoaded;
 
-    printf("BEFORE LOAD:\n");
+    printf("\nBEFORE LOAD:\n");
     EazazLoaded.displayUser();
 
     //Load the User object from file into empty User Object
@@ -78,7 +78,7 @@ int main(void){
 
     userInputFile.close();
 
-    printf("AFTER LOAD:\n");
+    printf("\nAFTER LOAD:\n");
     EazazLoaded.displayUser();
     //Expectations: Contents of Eazaz object that was saved to Users.txt file will
 	//				be placed into Empty Admin object. Validated by contents printed out 
