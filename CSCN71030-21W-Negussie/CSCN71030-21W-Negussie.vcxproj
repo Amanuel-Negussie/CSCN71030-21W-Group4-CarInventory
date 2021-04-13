@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="SaveLoad.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Node.cpp" />
