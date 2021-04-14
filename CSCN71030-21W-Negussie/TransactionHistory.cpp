@@ -20,9 +20,9 @@ TransactionHistory::TransactionHistory(TransactionHistory& rhs) {
 
 TransactionHistory::~TransactionHistory() {
 
-	delete this->inventory;
-	delete this->customer;
-	delete this->user;
+	//delete this->inventory;
+	//delete this->customer;
+	//delete this->user;
 
 }
 
@@ -37,9 +37,7 @@ void TransactionHistory::printTransaction(void) {
 }
 
 void TransactionHistory::save(ofstream& out) {
-
 	SAVE(this, sizeof(*this), out);
-
 }
 
 void TransactionHistory::load(ifstream& in) {

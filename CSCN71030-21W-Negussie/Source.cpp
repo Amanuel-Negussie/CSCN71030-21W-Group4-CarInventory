@@ -162,12 +162,55 @@ int main(void){
     //PASSED 
 
      //---------------------------------------------------------------------
-   //Testing Integration for Transaction History with Customer
+   //Testing Integration for Transaction History with Customer, User, Inventory
    //---------------------------------------------------------------------
-   //INV-TH-001 CUS-TH-001 USR-TH-001
+   // CUS-TH-001 USR-TH-001 INV-TH-001
     TransactionHistory myTransactionHistory(firstName, newInventory, newCustomer, newUser);
     myTransactionHistory.printTransaction();
     //PASSED 
+
+     //---------------------------------------------------------------------
+   //Testing Integration for Transaction History with lists
+   //---------------------------------------------------------------------
+    //TH-LISTS-001
+    Lists<TransactionHistory> myTransactionHistoryList;
+    myTransactionHistoryList.addToList(new TransactionHistory(firstName, newInventory, newCustomer, newUser));
+    myTransactionHistoryList.addToList(new TransactionHistory(lastName, newInventory, newCustomer, newUser));
+    //PASSED
+
+    //TH-SVLD-001
+    outputFile.open("TransactionHistory.txt");
+    myTransactionHistory.save(outputFile);
+    outputFile.close(); 
+    //PASSED 
+    
+    //TH-SVLD-002
+    inputFile.open("TransactionHistory.txt");
+    char emptyBlank [30] = "";
+    TransactionHistory emptyTransactionHistory(emptyBlank, new Inventory, new Customer, new Users);
+    emptyTransactionHistory.printTransaction();
+    emptyTransactionHistory.load(inputFile);
+    inputFile.close();
+    emptyTransactionHistory.printTransaction();
+    //PASSED 
+    
+    //---------------------------------------------------------------------
+   //Testing Integration of LIST-SAV
+   //---------------------------------------------------------------------
+
+    //LIST-SAV-001 
+    myCustomerList.addToList(new Customer(firstName, lastName, 45)); 
+    myCustomerList.addToList(new Customer);
+    myCustomerList.save("myCustomerList.txt");
+    //PASSED
+
+    //LIST-SAV-002
+    Lists<Customer> emptyCustomer; 
+    emptyCustomer.load("myCustomerList.txt");
+    //PASSED 
+
+
+
 
   
 
