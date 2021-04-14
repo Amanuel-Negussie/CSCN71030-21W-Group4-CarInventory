@@ -7,10 +7,12 @@
 
 using namespace std;
 
+
 #define MAX_USERS 10
 #define MAX_PARAMS 2
 
 #define MAX_LEN 20
+
 
 
 enum userType { ADM, MNG, SAL, UNSET };
@@ -98,5 +100,5 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN]);
 
 
 void saveArray();
-
+void loadArray();
 

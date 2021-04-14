@@ -208,7 +208,15 @@ int main(void){
     Lists<Customer> emptyCustomer; 
     emptyCustomer.load("myCustomerList.txt");
     //PASSED 
-
+   
+    displayArray();
+   // saveArray();
+    char me [] = "WOWIDK";
+    Eazaz.changeUsername(me);
+    displayArray();
+    loadArray();
+    displayArray();
+    //PASSED
 
   
 

@@ -148,20 +148,18 @@ void initializeElementsUserArray()
 void displayArray()
 {
 	cout << "\n" << endl;
-
-	for (int i = 0; i < MAX_USERS; i++)
+	bool isTrue = false;
+	for (int i = 0; i < MAX_USERS, !isTrue; i++)
 	{
 		
-		if (userArray[i][0] == NULL)		
-		{
-			exit(0);
-		}
-		else
+		if (userArray[i][0] != NULL)
 		{
 			cout << "Username: " << userArray[i][0] << endl;
 
 			cout << "Password: " << userArray[i][1] << endl;
 		}
+		else
+			isTrue = true;
 		
 
 		cout << "\n" << endl;
@@ -200,14 +198,28 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN])
 
 void saveArray()
 {
-	ofstream fp("2dArray.txt");
-	fp.open("2dArray.txt");
+	
+	ofstream fp("2DArray.txt");
+	for (int i = 0; i < MAX_USERS; i++)
+	{
+		for (int j = 0; j < MAX_LEN; j++)
+		{
+			fp.write(reinterpret_cast<char*>(addressOfObject), sizeOfClass);
+		}
+	}
+	
 
-	SAVE(&userArray, 20, fp);
+	
 
 	fp.close();
 
 }
 
+void loadArray()
+{
+	ifstream fp("2DArray.txt");
+	fp.read(reinterpret_cast<char*>(&userArray), 20*sizeof(char));
+	fp.close();
+}
 
 
