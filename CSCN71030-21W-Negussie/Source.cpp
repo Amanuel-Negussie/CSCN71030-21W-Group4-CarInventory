@@ -19,9 +19,6 @@ using namespace std;
 
 
 int main(void){
-
-    initializeElementsUserArray();
-
     //---------------------------------------------------------------------
 	//Testing Integration for Customer and Save/Load
     //---------------------------------------------------------------------
@@ -213,8 +210,6 @@ int main(void){
     //PASSED 
 
 
-    displayArray();
-    saveArray();
   
 
 	return 0;
