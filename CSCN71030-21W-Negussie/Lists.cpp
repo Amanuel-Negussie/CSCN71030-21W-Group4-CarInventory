@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string>
 #include "Customer.h"
-
 using namespace std;
 
 
@@ -12,6 +11,7 @@ Lists<T>::Lists() {
 	head = NULL;
 	tail = NULL;
 	lastVisited = NULL;
+	NumOfItems = 0;
 }
 
 template<class T>
@@ -25,6 +25,46 @@ void Lists<T>::addToList(T* object)
 		tail->setNextNode(newNode);
 		tail = newNode;
 	}
+	NumOfItems++;
+}
+
+template<class T>
+void Lists<T>::removeFromList(int nthItem) {
+	if (nthItem <= 0 || nthItem > NumOfItems) {
+		return;
+	}
+
+	Node<T>* temp = head;
+	if (nthItem == 1) {
+		head = temp->getNextNode();
+		temp->deleteNode();
+	}
+	else {
+		for (int i = 1; i < nthItem - 1; i++) {
+			temp = temp->getNextNode();
+
+			if (temp == NULL) {
+				return;
+			}
+		}
+		Node<T>* target = temp->getNextNode();
+		temp->setNextNode(target->getNextNode());
+		target->deleteNode();
+	}
+
+	if (head == NULL) {
+		tail = NULL;
+	}
+	else if (NumOfItems == nthItem) {
+		tail = temp;
+	}
+
+	NumOfItems--;
+}
+
+template <class T>
+int Lists<T>::getNumOfItems() {
+	return NumOfItems;
 }
 
 template <class T>
@@ -37,15 +77,35 @@ void Lists<T>::deleteList() {
 	delete this;
 }
 
+/*
+template <class T>
+void Lists<T>::save(void* func(T*),string file) {
+	Node<T>* current = head;
+	ofstream hi(file);
+	while (current != NULL) {
+		theObject.save(hi);
+		current = current->getNextNode();
+	}
+	hi.close();
+}
+*/
 
 template <class T>
 T* Lists<T>::peekHead() {
 	return head->getNodeData();
 }
 
+template <class T>
+Node<T>* Lists<T>::getHeadOfList() {
+	return head;
+}
+
 //template <class T>
 //Lists<T>::~Lists() {
-//	delete head;
+//	if (head != tail)
+//	{
+//		delete head;
+//	}
 //	delete tail;
 //	delete lastVisited;
 //}

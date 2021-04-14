@@ -196,30 +196,30 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN])
 }
 
 
-void saveArray()
-{
-	
-	ofstream fp("2DArray.txt");
-	for (int i = 0; i < MAX_USERS; i++)
-	{
-		for (int j = 0; j < MAX_LEN; j++)
-		{
-			fp.write(reinterpret_cast<char*>(addressOfObject), sizeOfClass);
-		}
-	}
-	
-
-	
-
-	fp.close();
-
-}
-
-void loadArray()
-{
-	ifstream fp("2DArray.txt");
-	fp.read(reinterpret_cast<char*>(&userArray), 20*sizeof(char));
-	fp.close();
-}
+//void saveArray()
+//{
+//	
+//	ofstream fp("2DArray.txt");
+//	for (int i = 0; i < MAX_USERS; i++)
+//	{
+//		for (int j = 0; j < MAX_LEN; j++)
+//		{
+//			fp.write(reinterpret_cast<char*>(addressOfObject), sizeOfClass);
+//		}
+//	}
+//	
+//
+//	
+//
+//	fp.close();
+//
+//}
+//
+//void loadArray()
+//{
+//	ifstream fp("2DArray.txt");
+//	fp.read(reinterpret_cast<char*>(&userArray), 20*sizeof(char));
+//	fp.close();
+//}
 
 

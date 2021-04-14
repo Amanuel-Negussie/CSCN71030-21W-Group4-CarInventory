@@ -158,7 +158,8 @@ int main(void){
    //INV-LST-001
     Lists<Inventory> myInventoryList;
     Inventory* newInventory = new Inventory(myMake, myModel, myVIN, SUV, 25999, 19999);
-    myInventoryList.addToList(&myInventory);
+    myInventoryList.addToList(newInventory);
+
     //PASSED 
 
      //---------------------------------------------------------------------
@@ -200,6 +201,7 @@ int main(void){
 
     //LIST-SAV-001 
     myCustomerList.addToList(new Customer(firstName, lastName, 45)); 
+    
     myCustomerList.addToList(new Customer);
     myCustomerList.save("myCustomerList.txt");
     //PASSED
@@ -209,15 +211,60 @@ int main(void){
     emptyCustomer.load("myCustomerList.txt");
     //PASSED 
    
-    displayArray();
-   // saveArray();
-    char me [] = "WOWIDK";
-    Eazaz.changeUsername(me);
-    displayArray();
-    loadArray();
-    displayArray();
+   // displayArray();
+   //// saveArray();
+   // char me [] = "WOWIDK";
+   // Eazaz.changeUsername(me);
+   // displayArray();
+   // loadArray();
+   // displayArray();
+   // //PASSED
+
+
+  //---------------------------------------------------------------------
+  //Testing integration of Lists and Customer 
+  //---------------------------------------------------------------------
+
+    //CUS-LST-002
+
+    cout << "\nNumber before:" << myCustomerList.getNumOfItems() << endl;
+    myCustomerList.removeFromList(1);
+    cout << "Number after:" << myCustomerList.getNumOfItems() << endl;
     //PASSED
 
+  //---------------------------------------------------------------------
+  //Testing integration of Lists and Users 
+  //---------------------------------------------------------------------
+
+    //USR-LST-002
+
+    cout << "\nNumber before:" << myUserList.getNumOfItems() << endl;
+    myUserList.removeFromList(1);
+    cout << "Number after:" << myUserList.getNumOfItems() << endl;
+    //PASSED
+
+
+  //---------------------------------------------------------------------
+  //Testing integration of Lists and Inventory 
+  //---------------------------------------------------------------------
+
+    //INV-LST-002
+
+    cout << "\nNumber before:" << myInventoryList.getNumOfItems() << endl;
+    myInventoryList.removeFromList(1);
+    cout << "Number after:" << myInventoryList.getNumOfItems() << endl;
+    //PASSED
+
+  //---------------------------------------------------------------------
+  //Testing integration of Lists and Transaction history 
+  //---------------------------------------------------------------------
+
+    //TH-LST-002
+
+    cout << "\nNumber before:" << myTransactionHistoryList.getNumOfItems() << endl;
+    myTransactionHistoryList.removeFromList(1);
+    cout << "Number after:" << myTransactionHistoryList.getNumOfItems() << endl;
+    //PASSED
   
 
 	return 0;
