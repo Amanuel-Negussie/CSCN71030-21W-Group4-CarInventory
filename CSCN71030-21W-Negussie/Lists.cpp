@@ -36,7 +36,7 @@ void Lists<T>::removeFromList(int nthItem) {
 
 	Node<T>* temp = head;
 	if (nthItem == 1) {
-		head = NULL;
+		head = temp->getNextNode();
 		temp->deleteNode();
 	}
 	else {
@@ -51,6 +51,14 @@ void Lists<T>::removeFromList(int nthItem) {
 		temp->setNextNode(target->getNextNode());
 		target->deleteNode();
 	}
+
+	if (head == NULL) {
+		tail = NULL;
+	}
+	else if (NumOfItems == nthItem) {
+		tail = temp;
+	}
+
 	NumOfItems--;
 }
 
@@ -96,7 +104,10 @@ Node<T>* Lists<T>::getHeadOfList() {
 
 template <class T>
 Lists<T>::~Lists() {
-	delete head;
+	if (head != tail)
+	{
+		delete head;
+	}
 	delete tail;
 	delete lastVisited;
 }

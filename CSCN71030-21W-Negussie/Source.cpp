@@ -60,12 +60,14 @@ int main(void){
 	stringToCharArray(t, myCharArray, STRLEN_MAX);
 
 	Lists<int> intLists;
-	for (int i = 1; i <= 10; i++) {
+	for (int i = 1; i <= 1; i++) {
 		int* newInt = new int(i);
 		intLists.addToList(newInt);
 	}
 
 	Node<int>* temp = intLists.getHeadOfList();
+
+	cout << "List before remove a item" << endl;
 	for (int i = 0; i < intLists.getNumOfItems(); i++) {
 		
 		int* output = temp->getNodeData();
@@ -73,8 +75,9 @@ int main(void){
 		temp = temp->getNextNode();
 	}
 	
-	intLists.removeFromList(-1);
+	intLists.removeFromList(1);
 	temp = intLists.getHeadOfList();
+	cout << "List after remove a item" << endl;
 	for (int i = 1; i <= intLists.getNumOfItems(); i++) {
 
 		int* output = temp->getNodeData();
