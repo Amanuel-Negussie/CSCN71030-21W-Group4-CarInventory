@@ -3,6 +3,7 @@
 #include "SaveLoad.h"
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -40,6 +41,8 @@ public:
 	void save(ofstream& out) override;
 
 	void load(ifstream& in) override;
+
+	
 
 
 };
@@ -94,6 +97,6 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN]);
 
 
 
-
+void saveArray();
 
 

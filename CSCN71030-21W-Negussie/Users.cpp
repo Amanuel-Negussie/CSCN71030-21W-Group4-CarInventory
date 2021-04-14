@@ -198,4 +198,16 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN])
 }
 
 
+void saveArray()
+{
+	ofstream fp("2dArray.txt");
+	fp.open("2dArray.txt");
+
+	SAVE(&userArray, 20, fp);
+
+	fp.close();
+
+}
+
+
 
