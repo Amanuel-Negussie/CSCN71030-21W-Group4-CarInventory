@@ -9,18 +9,18 @@ bool doesStringOnlyContain(const string& s, unsigned int DataType)
 		if ((stringContains & NUMBER) == 0 && s[i] >= '0' && s[i] <= '9') {
 			stringContains += NUMBER;
 		}
-		else if ((stringContains & SYMBOL) == 0) {
+		else if ((stringContains & SYMBOL) == 0 && s[i] == '&') {
 			stringContains += SYMBOL;
 		}
-		else if ((stringContains & LETTER) == 0) {
+		else if ((stringContains & LETTER) == 0 && (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z')) {
 			stringContains += LETTER;
 		}
-		else if ((stringContains & SPACE) == 0) {
+		else if ((stringContains & SPACE) == 0 && s[i] == ' ') {
 			stringContains += SPACE;
 		}
 
 	}
-	return stringContains & DataType;
+	return !(stringContains ^ DataType);
 }
 
 

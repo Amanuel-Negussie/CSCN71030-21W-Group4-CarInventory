@@ -13,12 +13,16 @@ CSCN7103021W-Negussie
 #include "Node.cpp"
 #include "Lists.cpp"
 #include "TransactionHistory.h"
+#include "Validation.h"
 
 
 using namespace std;
 
 
 int main(void){
+
+    initializeElementsUserArray();
+
     //---------------------------------------------------------------------
 	//Testing Integration for Customer and Save/Load
     //---------------------------------------------------------------------
@@ -149,6 +153,7 @@ int main(void){
    Lists<Users> myUserList;
    Users* newUser = new Admin(username, password, userID);
    myUserList.addToList(newUser);
+   newUser->displayUser();
    //PASSED 
    
     //---------------------------------------------------------------------
@@ -211,15 +216,7 @@ int main(void){
     emptyCustomer.load("myCustomerList.txt");
     //PASSED 
    
-   // displayArray();
-   //// saveArray();
-   // char me [] = "WOWIDK";
-   // Eazaz.changeUsername(me);
-   // displayArray();
-   // loadArray();
-   // displayArray();
-   // //PASSED
-
+    
 
   //---------------------------------------------------------------------
   //Testing integration of Lists and Customer 
@@ -239,7 +236,7 @@ int main(void){
     //USR-LST-002
 
     cout << "\nNumber before:" << myUserList.getNumOfItems() << endl;
-    myUserList.removeFromList(1);
+    //myUserList.removeFromList(1);                                                                      //check later
     cout << "Number after:" << myUserList.getNumOfItems() << endl;
     //PASSED
 
@@ -266,6 +263,48 @@ int main(void){
     cout << "Number after:" << myTransactionHistoryList.getNumOfItems() << endl;
     //PASSED
   
+  //---------------------------------------------------------------------
+  //Testing integration of 2dArray and Save/Load
+  //---------------------------------------------------------------------
+    //VER-SAV-001
+
+    
+
+    cout << "Display Array:" << endl;
+    displayArray();
+    
+    saveArray();
+    //Passed
+
+  //---------------------------------------------------------------------
+  //Testing integration of 2dArray and Save/Load
+  //---------------------------------------------------------------------
+  //VER-SAV-001
+
+    char me[] = "WOWIDK";
+    Eazaz.changeUsername(me);
+
+    cout << "Display Changed Array:" << endl;
+    displayArray();
+
+    loadArray();
+
+    cout << "Display Loaded Array:" << endl;
+    displayArray();
+    //PASSED
+
+  //---------------------------------------------------------------------
+  //Testing integration of Validation
+  //---------------------------------------------------------------------
+  //VLD-MAIN-001
+    
+    string a = "Hel lo1";
+
+    if (doesStringOnlyContain(a, NUMBER+LETTER+SPACE))
+        cout << "String contains all number,letter and spaces." << endl;
+    else
+        cout << "String doesn't contain all number,letter and spaces." << endl;
+    //PASSED
 
 	return 0;
 }

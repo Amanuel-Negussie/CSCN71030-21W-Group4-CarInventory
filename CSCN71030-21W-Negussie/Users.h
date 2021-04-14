@@ -99,6 +99,6 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN]);
 
 
 
-//void saveArray();
-//void loadArray();
+void saveArray();
+void loadArray();
 
