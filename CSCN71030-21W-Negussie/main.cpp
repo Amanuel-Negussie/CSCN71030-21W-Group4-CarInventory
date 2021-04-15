@@ -37,7 +37,7 @@ int main (void) {
 		//setup UserName and Password for Admin 
 		cout << "Did not load past user data." << endl;
 		cout << "Please create a new ADMIN user." << endl;
-
+		
 	}
 	else
 	{
@@ -72,10 +72,7 @@ int main (void) {
 	//
 	Lists<Users> myUserList; 
 	myUserList.load("Users.txt");
-	
-	
-
-	
+		
 	//search through list find User and Password 
 	Users* myUser = findUserInList(myUserList, UserName, UserPassword);
 	if (!(myUser))
@@ -87,14 +84,7 @@ int main (void) {
 		cout << "THIS WORKS" << endl;
 	}
 
-
-
-
-
-	//
-
-
-
+	mainMenu(myUser);
 
 	/*
 	* SETUP IS COMPLETE
@@ -112,14 +102,59 @@ int main (void) {
 
 
 
-//void mainMenu() {
-//
-//	cout << "Welcome to Really Good Dealership Management System" << endl;
-//	
-//	return ;
-//
-//	
-//
-//
-//}
+void mainMenu(Users* activeUser) {
+
+	cout << "Welcome "<< activeUser->getUsername() <<" to Really Good Dealership Management System" << endl;
+	
+	string userInput;
+	switch (activeUser->getUserType())
+	{
+	case ADM:
+
+		cout << "You have Administrator level access:" << endl;
+		cout << "1. Add an Inventory." << endl;
+		cout << "2. Delete an Inventory." << endl;
+		cout << "3. test " << endl;
+		cout << "0. Save and Exit." << endl;
+
+		cout << "Please a selection: " << endl;
+		
+
+
+		//MNG DUTIES
+
+		//ADM DUTIES
+
+		break;
+
+	case MNG:
+
+		cout << "Add an Inventory." << endl;
+		cout << "Delete an Inventory." << endl;
+		cout << "test " << endl;
+
+		//MNG DUTIES
+
+		break;
+
+	case SAL:
+
+		cout << "You have Sales Representative level access:" << endl;
+		cout << "1. Add an Inventory." << endl;
+		cout << "2. Delete an Inventory." << endl;
+		cout << "3. test " << endl;
+		cout << "0. Save and Exit." << endl;
+
+		cout << "Please a selection: " << endl;
+		string userInput;
+
+		break;
+	}
+
+	return ;
+
+	
+
+
+}
 

@@ -42,6 +42,8 @@ public:
 
 	char* getUsername();
 	char* getPassword();
+	char* getUserID();
+	userType getUserType();
 
 
 	void addArray();

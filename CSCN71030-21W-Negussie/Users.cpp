@@ -86,6 +86,15 @@ char* Users::getPassword()
 	return this->password;
 }
 
+char* Users::getUserID()
+{ 
+	return this->getUserID();
+
+}
+userType Users::getUserType()
+{
+	return this->getUserType();
+}
 
 Admin::Admin()
 {
