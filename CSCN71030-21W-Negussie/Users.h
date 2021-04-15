@@ -1,7 +1,9 @@
 #pragma once
 
 #include "SaveLoad.h"
-
+#include "Lists.h"
+#include "Lists.cpp"
+#include "Node.cpp"
 #include <iostream>
 #include <fstream>
 
@@ -37,6 +39,10 @@ public:
 	void changePassword(char password[MAX_LEN]);
 	
 	void changeUserId(char ID[MAX_LEN]);	
+
+	char* getUsername();
+	char* getPassword();
+
 
 	void addArray();
 
@@ -87,6 +93,7 @@ public:
 
 };
 
+Users* findUserInList(Lists<Users> currentList, char userName[MAX_LEN], char password[MAX_LEN]);
 
 
 void initializeElementsUserArray();
@@ -100,5 +107,5 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN]);
 
 
 void saveArray();
-void loadArray();
+bool loadArray();
 

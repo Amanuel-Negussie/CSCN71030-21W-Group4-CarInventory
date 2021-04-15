@@ -62,6 +62,24 @@ void Lists<T>::removeFromList(int nthItem) {
 	NumOfItems--;
 }
 
+template<class T>
+void Lists<T>::getItemFromList(int nthItem) {
+	if (nthItem <= 0 || nthItem > NumOfItems) {
+		return;
+	}
+
+	Node<T>* temp;
+
+	for (int i = 1; i < nthItem - 1; i++) {
+		temp = temp->getNextNode();
+
+		if (temp == NULL) {
+			return;
+		}
+	}
+
+}
+
 template <class T>
 int Lists<T>::getNumOfItems() {
 	return NumOfItems;
@@ -144,3 +162,29 @@ void Lists<T>::load(string file)
 	}
 	fp.close();
 }
+
+//template<class T>
+// T* Lists<T>::traverseAndCompare(T* object)
+//{
+//	 Node<T>* current;
+//	while (current)
+//	{
+//		if (memcmp(viewCurrentObject(current), object, sizeof(T)) == 0)
+//			return T*;
+//		current = current->getNextNode();
+//	}
+//	return NULL;
+//}
+
+
+//template<class T>
+//T* Lists<T>::viewCurrentObject(Node<T>* current)
+//{
+//	return current->getNodeData;
+//}
+
+
+
+
+
+

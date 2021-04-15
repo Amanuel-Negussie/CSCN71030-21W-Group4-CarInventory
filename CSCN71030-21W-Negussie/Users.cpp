@@ -59,6 +59,32 @@ void Users::load(ifstream& in) {
 
 }
 
+Users* findUserInList(Lists<Users> currentList, char userName[MAX_LEN], char password[MAX_LEN])
+{
+	Users* current;
+	Node<Users>* currentNode = currentList.getHeadOfList();
+	while (currentNode)
+	{
+		current = currentNode->getNodeData();
+		if (strcmp(current->getPassword(), password) == 0 && strcmp(current->getUsername(),userName)==0)
+		{
+			return current;
+		}
+		currentNode = currentNode->getNextNode();
+
+	}
+	return NULL;
+}
+
+
+char* Users::getUsername()
+{
+	return this->username;
+}
+char* Users::getPassword()
+{
+	return this->password;
+}
 
 
 Admin::Admin()
@@ -218,23 +244,34 @@ void saveArray()
 
 }
 //
-void loadArray()
+bool loadArray()
 {
 	ifstream fp("2DArray.txt");
-	char* temp = new char[MAX_LEN];
-	for (int i = 0; i < MAX_USERS; i++) {
+	if (fp.is_open())
+	{
+		
+		for (int i = 0; i < MAX_USERS; i++) {
+		
+			for (int j = 0; j < MAX_PARAMS; j++) {
+				char* temp = new char[MAX_LEN];
+				LOAD(temp, MAX_LEN * sizeof(char), fp);
+				if (fp.eof()) {
+					break;
+				}
+				userArray[i][j] = temp;
 
-		for (int j = 0; j < MAX_PARAMS; j++) {
-			
-			LOAD(temp, MAX_LEN * sizeof(char), fp);
-			if (fp.eof()) {				
-				break;
+				//strcpy_s(userArray[i][j], MAX_LEN, temp);
+				
 			}
-			strcpy_s(userArray[i][j],MAX_LEN, temp);
-		}
 
+		}
+		fp.close();
 	}
-	fp.close();
+	else
+	{
+		return false;
+	}
+
 }
 
 

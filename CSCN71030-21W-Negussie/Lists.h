@@ -18,6 +18,7 @@ public:
 	Lists();
 	void addToList(T* object);		//Add an item to the end of a list
 	void removeFromList(int nthItem);	//Remove an item from anywhere of a list
+	void getItemFromList(int nthItem);
 	int getNumOfItems();
 	bool isListEmpty();				//Check if a list is empty
 	void deleteList();				//delete a list
@@ -26,6 +27,10 @@ public:
 
 	//Waiting to be implemented
 	void insertToList(T* insertObject, T* targetObject);	//Insert an item to middle of a list
+	
+	//T* viewCurrentObject(Node<T>* current); //AMANUEL
+
+	//T* traverseAndCompare(T* object); //
 
 	//~Lists();
 	//File I/O
