@@ -15,6 +15,14 @@ Users::Users()
 
 }
 
+void Users::copy(Users& copyObject) {
+	strcpy_s(this->username, MAX_LEN, copyObject.getUsername());
+	strcpy_s(this->password, MAX_LEN, copyObject.getPassword());
+	strcpy_s(this->userid, MAX_LEN, copyObject.getUserID());
+	this->type = copyObject.getUserType();
+}
+
+
 void Users::displayUser()
 {
 	cout << "\nUsername: " << this->username << "\nUserId: " << this->userid << "\nUser Type: " << this->type << endl;
@@ -58,6 +66,12 @@ void Users::load(ifstream& in) {
 	LOAD(this, sizeof(*this), in);
 
 }
+
+//bool isUserSame(Users* current, char userName[MAX_LEN], char password[MAX_LEN])
+//{
+//	return (strcmp(current->getPassword(), password) == 0 && strcmp(current->getUsername(), userName) == 0);
+//}
+
 
 Users* findUserInList(Lists<Users> currentList, char userName[MAX_LEN], char password[MAX_LEN])
 {
@@ -282,5 +296,6 @@ bool loadArray()
 	}
 
 }
+
 
 

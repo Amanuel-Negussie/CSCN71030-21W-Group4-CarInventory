@@ -1,4 +1,18 @@
 #include "Inventory.h"
+#include "Lists.cpp"
+#include "Node.cpp"
+
+void printInventoryList(Lists<Inventory>* list)
+{
+	int num = list->getNumOfItems() + 1;
+	list->setLastVisitedToHead();
+	for (int i = 1; i < num; i++) {
+		cout << i << ". ";
+		list->getLastVistedNodeData()->printInventory();
+		list->setLastVistedToNext();
+	}
+	list->setLastVisitedToNULL();
+}
 
 Inventory::Inventory():make("Unset"), model("Unset"), VIN("Unset"), label(Unset), price(0), cost(0) {
 
@@ -16,6 +30,17 @@ Inventory::Inventory(char make[MAX_LEN], char model[MAX_LEN], char VIN[MAX_LEN],
 }
 
 Inventory::Inventory(Inventory& copyObject) { //Copy constructor
+
+	strcpy_s(this->make, MAX_LEN, copyObject.make);
+	strcpy_s(this->model, MAX_LEN, copyObject.model);
+	strcpy_s(this->VIN, MAX_LEN, copyObject.VIN);
+	this->label = copyObject.label;
+	this->price = copyObject.price;
+	this->cost = copyObject.cost;
+
+}
+
+void Inventory::copy( Inventory& copyObject) { //Copy 
 
 	strcpy_s(this->make, MAX_LEN, copyObject.make);
 	strcpy_s(this->model, MAX_LEN, copyObject.model);

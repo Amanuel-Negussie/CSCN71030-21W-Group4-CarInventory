@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
+
 template<class T>
 class Lists
 {
@@ -18,8 +19,13 @@ public:
 	Lists();
 	void addToList(T* object);		//Add an item to the end of a list
 	void removeFromList(int nthItem);	//Remove an item from anywhere of a list
-	void getItemFromList(int nthItem);
+	T* getItemFromList(int nthItem);
+	T* getLastVistedNodeData();
+	void setLastVistedToNext();
+	void setLastVisitedToHead();
+	void setLastVisitedToNULL();
 	int getNumOfItems();
+	void printingFunction(void(*printingFunction)(void*));
 	bool isListEmpty();				//Check if a list is empty
 	void deleteList();				//delete a list
 	T* peekHead();					//Return data from head
@@ -29,7 +35,7 @@ public:
 	void insertToList(T* insertObject, T* targetObject);	//Insert an item to middle of a list
 	
 	//T* viewCurrentObject(Node<T>* current); //AMANUEL
-
+	// T* Lists<T>::findObject(bool(*compare)(T*,void*,void*); //AMAnUEL
 	//T* traverseAndCompare(T* object); //
 
 	//~Lists();

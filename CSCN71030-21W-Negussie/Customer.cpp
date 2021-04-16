@@ -1,4 +1,9 @@
 #include "Customer.h"
+#include "Lists.cpp"
+#include "Node.cpp"
+
+#include <vector>
+
 /*
 Customer::Customer() {
 	strncpy_s(this->firstName, " ", FIRST_NAME_LEN);
@@ -8,11 +13,18 @@ Customer::Customer() {
 */
 
 
+
 Customer::Customer() :firstName("Unset"), lastName("Unset"), age(-1) {
 
 }
 
 Customer::Customer(const Customer& copyObject) {
+	strcpy_s(this->firstName, FIRST_NAME_LEN, copyObject.firstName);
+	strcpy_s(this->lastName, LAST_NAME_LEN, copyObject.lastName);
+	this->age = copyObject.age;
+}
+
+void Customer::copy( Customer& copyObject) {
 	strcpy_s(this->firstName, FIRST_NAME_LEN, copyObject.firstName);
 	strcpy_s(this->lastName, LAST_NAME_LEN, copyObject.lastName);
 	this->age = copyObject.age;
@@ -56,6 +68,37 @@ void Customer::setAge(int age) {
 void Customer::printCustomer(void)
 {
 	cout << "Customer Name is " << this->firstName << " " << this->lastName << " and their age is " << this->age << endl;
+}
+
+//void printCustomer(void* customer)
+//{
+//  Customer* temp = (Customer*) customer;
+//	cout << "Customer Name is " << temp->firstName << " " << temp.lastName << " and their age is " << temp.age << endl;
+//}
+
+
+//void Customer::printCustomerList(Lists<Customer> list) {
+//	int num = list.getNumOfItems() + 1;
+//	list.setLastVisitedToHead();
+//	for (int i = 1; i < num; i++) {
+//		cout << i << ". ";
+//		list.getLastVistedNodeData()->printCustomer();
+//		list.setLastVistedToNext();
+//	}
+//	list.setLastVisitedToNULL();
+//}
+
+
+void printCustomerList(Lists<Customer>* list)
+{
+	int num = list->getNumOfItems() + 1;
+	list->setLastVisitedToHead();
+	for (int i = 1; i < num; i++) {
+		cout << i << ". ";
+		list->getLastVistedNodeData()->printCustomer();
+		list->setLastVistedToNext();
+	}
+	list->setLastVisitedToNULL();
 }
 
 void Customer::save(ofstream& out)

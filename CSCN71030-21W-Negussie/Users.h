@@ -30,7 +30,8 @@ protected:
 
 public:
 	Users();
-	
+
+	void copy(Users& copyObject);
 
 	void displayUser();	
 
@@ -97,6 +98,7 @@ public:
 
 Users* findUserInList(Lists<Users> currentList, char userName[MAX_LEN], char password[MAX_LEN]);
 
+bool isUserSame(Users* current, char userName[MAX_LEN], char password[MAX_LEN]);
 
 void initializeElementsUserArray();
 

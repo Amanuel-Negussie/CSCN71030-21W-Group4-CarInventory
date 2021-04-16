@@ -61,11 +61,12 @@ int main (void) {
 	}
 	//AFTER VERIFICATION 
 	//
-	Lists<Users> myUserList; 
+	Lists<Users> myUserList;
 	myUserList.load("Users.txt");
 		
 	//search through list find User and Password 
 	Users* myUser = findUserInList(myUserList, UserName, UserPassword);
+
 	if (!(myUser))
 	{
 		cout << "Something went wrong. We're sorry." << endl;
@@ -74,6 +75,23 @@ int main (void) {
 	{
 		cout << "THIS WORKS" << endl;
 	}
+
+	Lists<Customer> myCustomerList; 
+	myCustomerList.load("Customer.txt"); 
+	myCustomerList.getItemFromList(1)->printCustomer();
+	printCustomerList(&myCustomerList);
+	Lists<Inventory> myInventoryList;
+	myInventoryList.load("Inventory.txt");
+	printInventoryList(&myInventoryList);
+	myInventoryList.getItemFromList(1)->printInventory();
+	Lists<TransactionHistory> myTransactionHistoryList;
+	char hello[30] = "FRIENDS";
+	TransactionHistory a (hello, *(myInventoryList.getHeadOfList()->getNodeData()), *(myCustomerList.getHeadOfList()->getNodeData()), *(myUserList.getHeadOfList()->getNodeData()));
+	myTransactionHistoryList.load("TransactionHistory.txt");
+	printTransactionHistoryList(&myTransactionHistoryList);
+	myTransactionHistoryList.getItemFromList(1)->printTransaction();
+	
+	//myCustomerList.printingFunction(printCustomerList);
 
 	mainMenu(myUser, myUserList);
 

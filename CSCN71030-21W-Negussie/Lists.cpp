@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string>
 #include "Customer.h"
+#include "Inventory.h"
 using namespace std;
 
 
@@ -63,21 +64,37 @@ void Lists<T>::removeFromList(int nthItem) {
 }
 
 template<class T>
-void Lists<T>::getItemFromList(int nthItem) {
+T* Lists<T>::getItemFromList(int nthItem) {
 	if (nthItem <= 0 || nthItem > NumOfItems) {
-		return;
+		return NULL;
 	}
 
-	Node<T>* temp;
+	Node<T>* temp = head;
 
 	for (int i = 1; i < nthItem - 1; i++) {
-		temp = temp->getNextNode();
-
-		if (temp == NULL) {
-			return;
-		}
+		temp = temp->getNextNode();		
 	}
+	return temp->getNodeData();
+}
 
+template <class T>
+T* Lists<T>::getLastVistedNodeData(){
+	return lastVisited->getNodeData();
+}
+
+template <class T>
+void Lists<T>::setLastVistedToNext(){
+	lastVisited = lastVisited->getNextNode();
+}
+
+template <class T>
+void Lists<T>::setLastVisitedToHead(){
+	lastVisited = head;
+}
+
+template <class T>
+void Lists<T>::setLastVisitedToNULL(){
+	lastVisited = NULL;
 }
 
 template <class T>
@@ -117,6 +134,35 @@ template <class T>
 Node<T>* Lists<T>::getHeadOfList() {
 	return head;
 }
+
+
+//template <class T>
+//T* Lists<T>::findObject(bool(*compare)(T*,void*,void*) ){
+//	T* current;
+//	Node<T>* currentNode = this->head;
+//	while (currentNode)
+//	{
+//		current = currentNode->getNodeData();
+//		if (compare(current))
+//			return current;
+//		currentNode = currentNode->getNextNode();
+//	}
+//	return NULL;
+//}
+
+
+template <class T>
+void Lists<T>::printingFunction(void(*printingFunction)(void*)){
+	int num = getNumOfItems() + 1;
+	setLastVisitedToHead();
+	for (int i = 1; i < num; i++) {
+		cout << i << ". ";
+		printingFunction(getLastVistedNodeData());
+		this->setLastVistedToNext();
+	}
+	setLastVisitedToNULL();
+}
+
 
 //template <class T>
 //Lists<T>::~Lists() {

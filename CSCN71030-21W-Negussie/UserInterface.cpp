@@ -54,8 +54,8 @@ void mainMenu(Users* activeUser, Lists<Users> myUserList) {
 
 		cout << "You have Sales Representative level access:" << endl;
 		cout << "1. Make a Sale" << endl;
-		cout << "2. View Inventory" << endl;
-		cout << "3. View Customer" << endl;
+		cout << "2. View Inventory List" << endl;
+		cout << "3. View Customer List" << endl;
 		cout << "4. View Transaction History" << endl;
 		cout << "0. Save and Exit." << endl;
 

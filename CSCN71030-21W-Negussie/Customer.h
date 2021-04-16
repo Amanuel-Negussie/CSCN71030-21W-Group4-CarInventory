@@ -3,6 +3,7 @@
 #include <fstream>
 #include "SaveLoad.h"
 #include <string>
+#include "Lists.h"
 #define _CRT_SECURE_NO_WARNINGS
 #define FIRST_NAME_LEN 30
 #define LAST_NAME_LEN 30
@@ -20,7 +21,9 @@ public:
 	Customer(char firstName[FIRST_NAME_LEN], char lastName[LAST_NAME_LEN], int age);
 	Customer(const Customer& copyObject);
 	~Customer();
+	//copy
 
+	void copy( Customer& copyObject);
 
 	//getters and setters 
 	char* getFirstName(void);
@@ -32,6 +35,7 @@ public:
 	void setAge(int age);
 	//print
 	void printCustomer(void);
+	/*void printCustomerList(Lists<Customer> list);*/
 
 	//save and load
 	void save(ofstream& out) override;
@@ -41,7 +45,6 @@ public:
 };
 
 
-
-
-
+void printCustomerList(Lists<Customer>* list);
+void printCustomer(void* customer);
 

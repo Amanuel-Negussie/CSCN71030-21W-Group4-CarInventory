@@ -1,10 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Lists.h"
 #include "SaveLoad.h"
 #include "Inventory.h"
 #include "Customer.h"
 #include "Users.h"
+
+//#include "Utility.h"
+
 
 #define MAX_LEN 30
 
@@ -15,13 +19,13 @@ class TransactionHistory : public SAVELOAD {
 private:
 
 	char transactionID[MAX_LEN];
-	Inventory* inventory;
-	Customer* customer;
-	Users* user;
+	Inventory inventory;
+	Customer customer;
+	Users user;
 
 public:
-
-	TransactionHistory(char[MAX_LEN], Inventory*, Customer*, Users*);
+	TransactionHistory();
+	TransactionHistory(char[MAX_LEN], Inventory& , Customer&, Users&);
 	TransactionHistory(TransactionHistory&);
 	~TransactionHistory();
 	
@@ -33,3 +37,4 @@ public:
 
 };
 
+void printTransactionHistoryList(Lists<TransactionHistory>* list);
