@@ -91,7 +91,7 @@ int main (void) {
 	printTransactionHistoryList(&myTransactionHistoryList);
 	myTransactionHistoryList.getItemFromList(1)->printTransaction();
 	
-	//myCustomerList.printingFunction(printCustomerList);
+	myCustomerList.printingFunction(printCustomer);
 
 	mainMenu(myUser, myUserList);
 

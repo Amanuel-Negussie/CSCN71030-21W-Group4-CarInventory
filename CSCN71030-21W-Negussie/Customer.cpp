@@ -70,11 +70,11 @@ void Customer::printCustomer(void)
 	cout << "Customer Name is " << this->firstName << " " << this->lastName << " and their age is " << this->age << endl;
 }
 
-//void printCustomer(void* customer)
-//{
-//  Customer* temp = (Customer*) customer;
-//	cout << "Customer Name is " << temp->firstName << " " << temp.lastName << " and their age is " << temp.age << endl;
-//}
+void printCustomer(void* customer)
+{
+  Customer* temp = (Customer*) customer;
+	cout << "Customer Name is " << temp->getFirstName() << " " << temp->getLastName() << " and their age is " << temp->getAge() << endl;
+}
 
 
 //void Customer::printCustomerList(Lists<Customer> list) {
