@@ -88,12 +88,12 @@ char* Users::getPassword()
 
 char* Users::getUserID()
 { 
-	return this->getUserID();
+	return this->userid;
 
 }
 userType Users::getUserType()
 {
-	return this->getUserType();
+	return this->type;
 }
 
 Admin::Admin()

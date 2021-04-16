@@ -4,16 +4,7 @@ CSCN7103021W-Negussie
 
 */
 
-#include <iostream>
-#include "Customer.h"
-#include "SaveLoad.h"
-#include "Users.h"
-#include "Inventory.h"
-#include "Lists.h"
-//#include "Node.cpp"
-//#include "Lists.cpp"
-#include "TransactionHistory.h"
-#include "Validation.h"
+
 #include "UserInterface.h"
 
 
@@ -84,7 +75,7 @@ int main (void) {
 		cout << "THIS WORKS" << endl;
 	}
 
-	mainMenu(myUser);
+	mainMenu(myUser, myUserList);
 
 	/*
 	* SETUP IS COMPLETE
@@ -102,59 +93,5 @@ int main (void) {
 
 
 
-void mainMenu(Users* activeUser) {
 
-	cout << "Welcome "<< activeUser->getUsername() <<" to Really Good Dealership Management System" << endl;
-	
-	string userInput;
-	switch (activeUser->getUserType())
-	{
-	case ADM:
-
-		cout << "You have Administrator level access:" << endl;
-		cout << "1. Add an Inventory." << endl;
-		cout << "2. Delete an Inventory." << endl;
-		cout << "3. test " << endl;
-		cout << "0. Save and Exit." << endl;
-
-		cout << "Please a selection: " << endl;
-		
-
-
-		//MNG DUTIES
-
-		//ADM DUTIES
-
-		break;
-
-	case MNG:
-
-		cout << "Add an Inventory." << endl;
-		cout << "Delete an Inventory." << endl;
-		cout << "test " << endl;
-
-		//MNG DUTIES
-
-		break;
-
-	case SAL:
-
-		cout << "You have Sales Representative level access:" << endl;
-		cout << "1. Add an Inventory." << endl;
-		cout << "2. Delete an Inventory." << endl;
-		cout << "3. test " << endl;
-		cout << "0. Save and Exit." << endl;
-
-		cout << "Please a selection: " << endl;
-		string userInput;
-
-		break;
-	}
-
-	return ;
-
-	
-
-
-}
 
