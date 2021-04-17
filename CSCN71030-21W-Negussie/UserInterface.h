@@ -11,6 +11,13 @@
 #include "Validation.h"
 #include "time.h"
 
+#define MIN_TRANSACTIONID 1000
+#define MAX_TRANSACTIONID 9999
+
+#define TH_FILE "TransactionHistory.txt"
+#define CUS_FILE "Customer.txt"
+#define USR_FILE "Users.txt"
+#define INV_FILE "Inventory.txt"
 //using namespace std; 
 
 //void mainMenu(Users* activeUser, Lists<Users> myUserList);

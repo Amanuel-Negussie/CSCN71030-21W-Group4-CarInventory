@@ -7,6 +7,8 @@ CSCN7103021W-Negussie
 
 #include "UserInterface.h"
 
+
+
 using namespace std;
 /*
 1. LOAD USER ARRAY DATA
@@ -96,7 +98,7 @@ int main (void) {
 
 	Lists<TransactionHistory> myTransactionHistoryList;
 	TransactionHistory a (30, *(myInventoryList.getHeadOfList()->getNodeData()), *(myCustomerList.getHeadOfList()->getNodeData()), *(myUserList.getHeadOfList()->getNodeData()));
-	myTransactionHistoryList.load("TransactionHistory.txt");
+	myTransactionHistoryList.load(TH_FILE);
 	printTransactionHistoryList(&myTransactionHistoryList);
 	myTransactionHistoryList.getItemFromList(1)->printTransaction();
 	

@@ -1,7 +1,5 @@
 #include "UserInterface.h"
 
-#define MIN_TRANSACTIONID 1000
-#define MAX_TRANSACTIONID 9999
 
 using namespace std;
 
@@ -43,12 +41,14 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 
 
-	bool exit = false;
+	bool isDone = false;
+	
+	userType myUserType = activeUser->getUserType();
 
-	while (!exit)
+	while (!isDone)
 
 	{
-		switch (activeUser->getUserType())
+		switch (myUserType)
 		{
 		case ADM:
 			cout << "You have Admin level access:" << endl;
@@ -134,7 +134,14 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 			case 0:		//Save and Exit
 
-				exit = true;
+				myTransactionHistoryList.save(TH_FILE);
+				myCustomerList.save(CUS_FILE);
+				myInventoryList.save(INV_FILE);
+				myUserList.save(USR_FILE);
+				saveArray();
+
+
+				isDone = true;
 
 				break;
 
@@ -195,7 +202,9 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 			case 0:		//Save and Exit
 
-				exit = true;
+				
+
+				isDone = true;
 
 				break;
 
@@ -244,7 +253,7 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 			case 0:		//Save and Exit
 
-				exit = true;
+				isDone = true;
 
 				break;
 

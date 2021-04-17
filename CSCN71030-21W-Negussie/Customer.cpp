@@ -92,14 +92,18 @@ void printCustomer(void* customer)
 void printCustomerList(Lists<Customer>* list)
 {
 	int num = list->getNumOfItems() + 1;
-	list->setLastVisitedToHead();
+	Node<Customer>* current = list->getHeadOfList();
+
 	for (int i = 1; i < num; i++) {
 		cout << i << ". ";
-		list->getLastVistedNodeData()->printCustomer();
-		list->setLastVistedToNext();
+		current->getNodeData()->printCustomer();
+		current = current->getNextNode();
 	}
 	list->setLastVisitedToNULL();
 }
+
+
+
 
 void Customer::save(ofstream& out)
 {
