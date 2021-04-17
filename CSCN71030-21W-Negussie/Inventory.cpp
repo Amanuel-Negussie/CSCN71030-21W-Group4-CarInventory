@@ -130,12 +130,25 @@ void Inventory::setCost(int cost) {
 
 void Inventory::printInventory(void) {
 
-	cout << "Make: " << this->make << endl;
+	cout << "\nMake: " << this->make << endl;
 	cout << "Model: " << this->model << endl;
 	cout << "VIN: " << this->VIN << endl;
 	labelToString(this->label);
 	cout << "Price: " << this->price << endl;
 	cout << "Cost: " << this->cost << endl;
+
+}
+
+void printInventory(void* inventory) {
+
+	Inventory* temp = (Inventory*)inventory;
+
+	cout << "Make: " << temp->getMake() << endl;
+	cout << "Model: " << temp->getModel()<< endl;
+	cout << "VIN: " << temp->getVIN() << endl;	
+	temp->labelToString(temp->getLabel());
+	cout << "Price: " << temp->getPrice() << endl;
+	cout << "Cost: " << temp->getCost() << endl;
 
 }
 

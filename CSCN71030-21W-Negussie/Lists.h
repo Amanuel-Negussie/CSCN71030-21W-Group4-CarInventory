@@ -30,6 +30,7 @@ public:
 	void deleteList();				//delete a list
 	T* peekHead();					//Return data from head
 	Node<T>* getHeadOfList();
+	Node<T>* getTailOfList();
 
 	//Waiting to be implemented
 	void insertToList(T* insertObject, T* targetObject);	//Insert an item to middle of a list

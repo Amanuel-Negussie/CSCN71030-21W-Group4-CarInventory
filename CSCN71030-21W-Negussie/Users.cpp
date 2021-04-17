@@ -28,6 +28,12 @@ void Users::displayUser()
 	cout << "\nUsername: " << this->username << "\nUserId: " << this->userid << "\nUser Type: " << this->type << endl;
 }
 
+void printUser(void* user)
+{
+	Users* temp = (Users*)user;
+	cout << "\nUsername: " << temp->getUsername() << "\nUserId: " << temp->getUserID() << "\nUser Type: " << temp->getUserType() << endl;
+}
+
 void Users::changeUsername(char name[MAX_LEN])
 {
 	strcpy_s(this->username, MAX_LEN, name);
@@ -279,14 +285,15 @@ bool loadArray()
 				char* temp = new char[MAX_LEN];
 				LOAD(temp, MAX_LEN * sizeof(char), fp);
 				if (fp.eof()) {
-					break;
+
+					return true;
 				}
 				userArray[i][j] = temp;
 
 				//strcpy_s(userArray[i][j], MAX_LEN, temp);
 				
 			}
-
+			userCount++;
 		}
 		fp.close();
 	}

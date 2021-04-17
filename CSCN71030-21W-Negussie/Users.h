@@ -113,3 +113,6 @@ bool verifyCredentials(char username[MAX_LEN], char password[MAX_LEN]);
 void saveArray();
 bool loadArray();
 
+void printUser(void* user);
+
+

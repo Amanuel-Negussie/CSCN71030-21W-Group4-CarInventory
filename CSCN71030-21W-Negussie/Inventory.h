@@ -49,5 +49,8 @@ public:
 	
 	void labelToString(LABEL);
 
+	friend void printInventory(void* inventory);
 };
 void printInventoryList(Lists<Inventory>* list);
+
+void printInventory(void* inventory);

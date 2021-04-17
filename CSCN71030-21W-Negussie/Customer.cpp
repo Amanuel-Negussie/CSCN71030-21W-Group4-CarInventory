@@ -67,7 +67,7 @@ void Customer::setAge(int age) {
 //print and save and load functions//
 void Customer::printCustomer(void)
 {
-	cout << "Customer Name is " << this->firstName << " " << this->lastName << " and their age is " << this->age << endl;
+	cout << "\nCustomer Name is " << this->firstName << " " << this->lastName << " and their age is " << this->age << endl;
 }
 
 void printCustomer(void* customer)

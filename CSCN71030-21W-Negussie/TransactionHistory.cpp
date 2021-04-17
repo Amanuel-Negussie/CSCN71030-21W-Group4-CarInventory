@@ -44,13 +44,20 @@ TransactionHistory::~TransactionHistory() {
 }
 
 void TransactionHistory::printTransaction(void) {
-
 	cout <<"\nTransaction ID: " << this->transactionID << endl;
 	this->inventory.printInventory();
 	this->customer.printCustomer();
 	this->user.displayUser();
 	cout << endl;
+}
 
+void printTransaction(void* transaction) {
+	TransactionHistory* temp = (TransactionHistory*)transaction;
+	cout <<"\nTransaction ID: " << temp->transactionID << endl;
+	temp->inventory.printInventory();
+	temp->customer.printCustomer();
+	temp->user.displayUser();
+	cout << endl;
 }
 
 void TransactionHistory::save(ofstream& out) {

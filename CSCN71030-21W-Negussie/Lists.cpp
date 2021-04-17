@@ -135,6 +135,12 @@ Node<T>* Lists<T>::getHeadOfList() {
 	return head;
 }
 
+template <class T>
+Node<T>* Lists<T>::getTailOfList() {
+	return tail;
+}
+
+
 
 //template <class T>
 //T* Lists<T>::findObject(bool(*compare)(T*,void*,void*) ){
@@ -156,7 +162,7 @@ void Lists<T>::printingFunction(void(*printingFunction)(void*)){
 	int num = getNumOfItems() + 1;
 	setLastVisitedToHead();
 	for (int i = 1; i < num; i++) {
-		cout << i << ". ";
+		cout <<  i << ". ";
 		printingFunction(getLastVistedNodeData());
 		this->setLastVistedToNext();
 	}

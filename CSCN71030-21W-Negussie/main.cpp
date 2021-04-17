@@ -20,6 +20,13 @@ int main (void) {
 	
 	//LOADING ARRAY AND SETTING UP ADMIN OR VERIFYING USER 
 	initializeElementsUserArray();
+	/*char usern[MAX_LEN] = "Eazaz";
+	char pass[MAX_LEN] = "Password1";
+	char userid[MAX_LEN] = "EazazJ1";
+
+	new Admin(usern, pass, userid);
+	saveArray();*/
+
 	string userNameInput, userPasswordInput;
 	char UserName[MAX_LEN];
 	char UserPassword[MAX_LEN];
@@ -63,7 +70,7 @@ int main (void) {
 	//
 	Lists<Users> myUserList;
 	myUserList.load("Users.txt");
-		
+	
 	//search through list find User and Password 
 	Users* myUser = findUserInList(myUserList, UserName, UserPassword);
 
@@ -80,10 +87,14 @@ int main (void) {
 	myCustomerList.load("Customer.txt"); 
 	myCustomerList.getItemFromList(1)->printCustomer();
 	printCustomerList(&myCustomerList);
+
+
 	Lists<Inventory> myInventoryList;
 	myInventoryList.load("Inventory.txt");
 	printInventoryList(&myInventoryList);
 	myInventoryList.getItemFromList(1)->printInventory();
+
+
 	Lists<TransactionHistory> myTransactionHistoryList;
 	char hello[30] = "FRIENDS";
 	TransactionHistory a (hello, *(myInventoryList.getHeadOfList()->getNodeData()), *(myCustomerList.getHeadOfList()->getNodeData()), *(myUserList.getHeadOfList()->getNodeData()));
@@ -93,7 +104,7 @@ int main (void) {
 	
 	myCustomerList.printingFunction(printCustomer);
 
-	mainMenu(myUser, myUserList);
+	mainMenu(myUser, myUserList, myInventoryList, myCustomerList, myTransactionHistoryList);
 
 	/*
 	* SETUP IS COMPLETE

@@ -33,8 +33,10 @@ public:
 	void load(ifstream& in) override;
 
 	void printTransaction(void);
+	friend void printTransaction(void* transaction);
 
 
 };
 
 void printTransactionHistoryList(Lists<TransactionHistory>* list);
+void printTransaction(void* transaction);
