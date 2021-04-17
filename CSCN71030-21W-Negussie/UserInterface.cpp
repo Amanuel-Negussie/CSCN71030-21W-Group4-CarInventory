@@ -1,10 +1,15 @@
 #include "UserInterface.h"
 
+#define MIN_TRANSACTIONID 1000
+#define MAX_TRANSACTIONID 9999
+
 using namespace std;
 
 void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myInventoryList, Lists<Customer>& myCustomerList, Lists<TransactionHistory>& myTransactionHistoryList) {
 
 	system("cls");
+	srand(time(NULL));
+
 
 	cout << "Welcome " << activeUser->getUsername() << " to Really Good Dealership Management System" << endl;
 
@@ -105,7 +110,7 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 			case 6:		//Make a sale
 
-				//makeAsale(myCustomerList, myInventoryList, myTransactionHistoryList);
+				makeAsale(myCustomerList, myInventoryList, myTransactionHistoryList, *activeUser);
 
 				break;
 
@@ -134,7 +139,7 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 				break;
 
 			default:
-
+				cout << "Please choose a valid number" << endl;
 				break;
 			}
 
@@ -387,25 +392,166 @@ void viewTransactionHistoryList(Lists<TransactionHistory>& myTransactionHistoryL
 	myTransactionHistoryList.printingFunction(printTransaction);
 }
 
-void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryList, Lists<TransactionHistory>& myTransactionHistoryList)
+void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryList, Lists<TransactionHistory>& myTransactionHistoryList, Users& user)
 {
-	//Choose existing customer
-				//create new customer
-				//choose inventory
 
-				//system("cls");
-
-				//----- Create Sale -----
-				//Trans
-				//Customer Information:
-				//Inventory Information:
-				//User
-				//1. Select Customer
-				//2. Select Inventory
-				//3. Comfirm 
-				//0. Abort and Return Main Menu
-				//
+	int transactionHistoryChoice;
+	int THCustomerChoice;
+	int THInventoryChoice;
 
 
-	
+
+	char firstName[FIRST_NAME_LEN];
+	char lastName[LAST_NAME_LEN];
+	int age;
+
+
+	cout << "1. Select Existing Customer" << endl;
+	cout << "2. Create a new Customer" << endl;
+	cout << "0. Abort and Return Previous Menu" << endl;
+	cin >> transactionHistoryChoice;
+	Customer* cp; 
+	Inventory* ip; 
+	switch (transactionHistoryChoice)
+	{
+	case 1:
+		cout << "Choose one of the following customers:" << endl;
+		myCustomerList.printingFunction(printCustomer);
+
+		cin >> THCustomerChoice;
+
+		cp = myCustomerList.getItemFromList(THCustomerChoice);
+
+		cout << "Customer " << cp->getFirstName() << "has been chosen." << endl;
+		cout << "Select Vehicle from Inventory" << endl;
+
+		myInventoryList.printingFunction(printInventory);
+
+		cin >> THInventoryChoice;
+		ip = myInventoryList.getItemFromList(THInventoryChoice);
+		ip->printInventory();
+		cout << endl;
+		myTransactionHistoryList.addToList(new TransactionHistory(RandInt(MIN_TRANSACTIONID, MAX_TRANSACTIONID), *ip, *cp, user));
+
+
+
+
+
+
+
+		break;
+	case 2:
+
+		break;
+	default:
+
+		break;
+
+	}
+}
+
+
+
+//
+//	cout << "----- Create Sale -----" << endl;
+//	cout << "1. Select Customer" << endl;
+//	cout << "2. Select Inventory" << endl;
+//	cout << "3. Confirm " << endl;
+//	cout << "0. Abort and Return Main Menu" << endl;
+//
+//	cin >> transactionHistoryChoice;
+//	switch (transactionHistoryChoice)
+//	{
+//	case 1:
+//		cout << "1. Select Existing Customer" << endl;
+//		cout << "2. Create a new Customer" << endl;
+//		cout << "0. Abort and Return Previous Menu" << endl;
+//
+//
+//		cin >> transactionHistoryChoice;
+//		switch (transactionHistoryChoice)
+//		{
+//		case 1:
+//			cout << "Choose one of the following customers:" << endl;
+//			myCustomerList.printingFunction(printCustomer);
+//
+//			cin >> THCustomerChoice;
+//
+//			myCustomerList.getItemFromList(THCustomerChoice);
+//
+//			break;
+//
+//		case 2:
+//
+//			cout << "Please enter firstname:" << endl;
+//			cin >> firstName;
+//
+//			cout << "Please enter lastname:" << endl;
+//			cin >> lastName;
+//
+//			cout << "Please enter age:" << endl;
+//			cin >> age;
+//
+//
+//			myCustomerList.addToList(new Customer(firstName, lastName, age));
+//
+//
+//			break;
+//
+//		case 0:
+//
+//			break;
+//		}
+//	case 2:
+//		cout << "Select Vehicle from Inventory" << endl;
+//
+//		myInventoryList.printingFunction(printInventory);
+//
+//		cin >> THInventoryChoice;
+//
+//		myInventoryList.getItemFromList(THInventoryChoice);
+//
+//		break;
+//
+//	case 3:
+//
+//		myCustomerList.getTailOfList()->getNodeData()->printCustomer();
+//
+//		myInventoryList.getItemFromList(THInventoryChoice)->printInventory();
+//
+//		break;
+//
+//	case 0:
+//
+//		break;
+//
+//		//Choose existing customer
+//					//create new customer
+//					//choose inventory
+//
+//					//system("cls");
+//
+//					//----- Create Sale -----
+//					//Trans
+//					//Customer Information:
+//					//Inventory Information:
+//					//User
+//					//1. Select Customer
+//					//2. Select Inventory
+//					//3. Comfirm 
+//					//0. Abort and Return Main Menu
+//					//
+//
+//
+//
+//	}
+//
+//
+//
+//}
+
+
+int RandInt(int min, int max)
+{
+	return min + (rand() % (max - min + 1));
 }

@@ -18,9 +18,9 @@ TransactionHistory::TransactionHistory() {
 	
 
 
-TransactionHistory::TransactionHistory(char transactionID [MAX_LEN], Inventory& inventory, Customer& customer, Users& user) {
+TransactionHistory::TransactionHistory(int transactionID, Inventory& inventory, Customer& customer, Users& user) {
 
-	strcpy_s(this->transactionID, MAX_LEN, transactionID);
+	this->transactionID = transactionID;
 	this->inventory.copy(inventory);
 	this->customer.copy(customer);
 	this->user.copy(user);
@@ -29,7 +29,7 @@ TransactionHistory::TransactionHistory(char transactionID [MAX_LEN], Inventory& 
 
 TransactionHistory::TransactionHistory(TransactionHistory& rhs) {
 
-	strcpy_s(this->transactionID, MAX_LEN, rhs.transactionID);
+	this->transactionID = rhs.transactionID;
 	this->inventory.copy(rhs.inventory);
 	this->customer.copy(rhs.customer);
 	this->user.copy(rhs.user);

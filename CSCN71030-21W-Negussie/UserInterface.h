@@ -9,6 +9,7 @@
 //#include "Lists.cpp"
 #include "TransactionHistory.h"
 #include "Validation.h"
+#include "time.h"
 
 //using namespace std; 
 
@@ -29,4 +30,6 @@ void viewInventoryList(Lists<Inventory>& myInventoryList);
 
 void viewTransactionHistoryList(Lists<TransactionHistory>& myTransactionHistoryList);
 
-void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryList, Lists<TransactionHistory>& myTransactionHistoryList);
+void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryList, Lists<TransactionHistory>& myTransactionHistoryList, Users& user);
+
+int RandInt(int min, int max);

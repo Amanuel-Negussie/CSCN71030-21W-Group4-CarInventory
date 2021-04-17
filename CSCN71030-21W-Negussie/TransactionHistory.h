@@ -18,14 +18,14 @@ class TransactionHistory : public SAVELOAD {
 
 private:
 
-	char transactionID[MAX_LEN];
+	int transactionID;
 	Inventory inventory;
 	Customer customer;
 	Users user;
 
 public:
 	TransactionHistory();
-	TransactionHistory(char[MAX_LEN], Inventory& , Customer&, Users&);
+	TransactionHistory(int, Inventory& , Customer&, Users&);
 	TransactionHistory(TransactionHistory&);
 	~TransactionHistory();
 	
