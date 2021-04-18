@@ -4,10 +4,7 @@ CSCN7103021W-Negussie
 
 */
 
-
 #include "UserInterface.h"
-
-
 
 using namespace std;
 /*
@@ -17,25 +14,43 @@ using namespace std;
 
 int main (void) {
 
+	Lists<Users> myUserList;
 	
 	//LOADING ARRAY AND SETTING UP ADMIN OR VERIFYING USER 
 	initializeElementsUserArray();
-	/*char usern[MAX_LEN] = "Eazaz";
-	char pass[MAX_LEN] = "Password1";
-	char userid[MAX_LEN] = "EazazJ1";
-
-	new Admin(usern, pass, userid);
-	saveArray();*/
 
 	string userNameInput, userPasswordInput;
 	char UserName[MAX_LEN];
 	char UserPassword[MAX_LEN];
 	if (!loadArray())
 	{
-		//setup UserName and Password for Admin 
-		cout << "Did not load past user data." << endl;
-		cout << "Please create a new ADMIN user." << endl;
 		
+		char usernameChoice[MAX_LEN] = "";
+		char passwordChoice[MAX_LEN] = "";
+		char useridChoice[MAX_LEN] = "";
+
+		//setup UserName and Password for Admin 
+
+		cout << "...Could not load any previous user data..." << endl;
+		cout << endl;
+		cout << "Let's set up your new Administrator!" << endl;
+		cout << endl;
+
+		cout << "Please enter the username for the Admin:" << endl;
+		cin >> usernameChoice;
+		cout << "Please enter the user ID for the Admin:" << endl;
+		cin >> useridChoice;
+		cout << "Please enter the password for the Admin:" << endl;
+		cin >> passwordChoice;
+		
+		myUserList.addToList(new Admin(usernameChoice, passwordChoice, useridChoice));
+		myUserList.save(USR_FILE);
+		saveArray();
+
+		cout << "Your Administrator has been set-up. Please restart the program for full integration." << endl;
+
+		return 0;
+
 	}
 	else
 	{
@@ -43,9 +58,9 @@ int main (void) {
 		bool isVerified = false; 
 		while (!isVerified)
 		{
-			cout << "\nHELLO: What's your username?";
+			cout << "\nGreetings. Please enter your username: ";
 			cin >> userNameInput;
-			cout << "\nHELLO " << userNameInput << " what's your password?";
+			cout << "\nHello " << userNameInput << "." << " Please enter your password: ";
 			cin >> userPasswordInput;
 
 			stringToCharArray(userNameInput, UserName, MAX_LEN); //converting it to char array 
@@ -63,15 +78,10 @@ int main (void) {
 			}
 		}
 
-
-		//after a set amount of times shutdown// return -1;
 	}
-	//AFTER VERIFICATION 
-	//
-	Lists<Users> myUserList;
-	myUserList.load("Users.txt");
-	
+		
 	//search through list find User and Password 
+	myUserList.load(USR_FILE);
 	Users* myUser = findUserInList(myUserList, UserName, UserPassword);
 
 	if (!(myUser))
@@ -84,36 +94,24 @@ int main (void) {
 	}
 
 	Lists<Customer> myCustomerList; 
-	myCustomerList.load("Customer.txt"); 
-	myCustomerList.getItemFromList(1)->printCustomer();
-	printCustomerList(&myCustomerList);
-
+	myCustomerList.load(CUS_FILE);
+	//myCustomerList.getItemFromList(1)->printCustomer();
+	//printCustomerList(&myCustomerList);
 
 	Lists<Inventory> myInventoryList;
-	myInventoryList.load("Inventory.txt");
-	printInventoryList(&myInventoryList);
-	myInventoryList.getItemFromList(1)->printInventory();
-
+	myInventoryList.load(INV_FILE);
+	//printInventoryList(&myInventoryList);
+	//myInventoryList.getItemFromList(1)->printInventory();
 
 	Lists<TransactionHistory> myTransactionHistoryList;
-	TransactionHistory a (30, *(myInventoryList.getHeadOfList()->getNodeData()), *(myCustomerList.getHeadOfList()->getNodeData()), *(myUserList.getHeadOfList()->getNodeData()));
+	//TransactionHistory a (30, *(myInventoryList.getHeadOfList()->getNodeData()), *(myCustomerList.getHeadOfList()->getNodeData()), *(myUserList.getHeadOfList()->getNodeData()));
 	myTransactionHistoryList.load(TH_FILE);
-	printTransactionHistoryList(&myTransactionHistoryList);
-	myTransactionHistoryList.getItemFromList(1)->printTransaction();
+	//printTransactionHistoryList(&myTransactionHistoryList);
+	//myTransactionHistoryList.getItemFromList(1)->printTransaction();
 	
-	myCustomerList.printingFunction(printCustomer);
+	//myCustomerList.printingFunction(printCustomer);
 
 	mainMenu(myUser, myUserList, myInventoryList, myCustomerList, myTransactionHistoryList);
-
-	/*
-	* SETUP IS COMPLETE
-	*/
-	
-	//while (true) {
-
-	//	mainMenu(); // Takes the user type to the main menu. Menu will filter different options based on user type.
-
-	//}
 
 	return 0;
 

@@ -8,7 +8,8 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 	srand(time(NULL));
 
 
-	cout << "Welcome " << activeUser->getUsername() << " to Really Good Dealership Management System" << endl;
+	cout << "Welcome, " << activeUser->getUsername() << ", to Really Good Dealership Management System" << endl;
+	cout << endl;
 
 	int adminInput;
 	int managerInput;
@@ -50,13 +51,15 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 		switch (myUserType)
 		{
 		case ADM:
-			cout << "You have Admin level access:" << endl;
-			cout << "ONLY ADMIN LEVEL" << endl;
-			cout << "____________________" << endl;
+			cout << "You have Admin level access." << endl;
+			cout << endl;
+
+			cout << "ADMIN FUNCTIONS:" << endl;
+			cout << "---------------------" << endl;
 			cout << "1. Add User" << endl;
 			cout << "2. Remove User" << endl;
 			cout << "3. View Users List" << endl;
-			cout << "____________________" << endl;
+			cout << "---------------------" << endl;
 			cout << "4. Add Inventory" << endl;
 			cout << "5. Remove Inventory" << endl;
 			cout << "6. Make a Sale" << endl;
@@ -64,6 +67,7 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 			cout << "8. View Customer List" << endl;
 			cout << "9. View Transaction History" << endl;
 			cout << "0. Save and Exit." << endl;
+			cout << endl;
 
 			cout << "Please make a selection: " << endl;
 
@@ -155,52 +159,57 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 			break;
 
 		case MNG:
-			cout << "You have Manager level access:" << endl;
-			cout << "ONLY MANAGER LEVEL" << endl;
-			cout << "____________________" << endl;
+			cout << "You have Manager level access." << endl;
+			cout << endl;
+
+			cout << "MANAGER FUNCTIONS:" << endl;
+			cout << "---------------------" << endl;
 			cout << "1. Add Inventory" << endl;
 			cout << "2. Remove Inventory" << endl;
-			cout << "____________________" << endl;
+			cout << "---------------------" << endl;
 			cout << "3. Make a Sale" << endl;
 			cout << "4. View Inventory List" << endl;
 			cout << "5. View Customer List" << endl;
 			cout << "6. View Transaction History" << endl;
 			cout << "0. Save and Exit." << endl;
+			cout << endl;
 
-
-			cout << "Please make a selection: " << endl;
+			cout << "Please make a selection:";
 
 			cin >> managerInput;
 
 			switch (managerInput)
 			{
 			case 1:		//Add Inventory
-
+				addInventory(myInventoryList);
 				break;
 
 			case 2:		//Remover Inventory
-
+				removeInventory(myInventoryList);
 				break;
 
 			case 3:		//Make a sale
-
+				makeAsale(myCustomerList, myInventoryList, myTransactionHistoryList, *activeUser);
 				break;
 
 			case 4:		//View Inventory List
-
+				viewInventoryList(myInventoryList);
 				break;
 
 			case 5:		//View Customer List
-
+				viewCustomerList(myCustomerList);
 				break;
 
 			case 6:		//View Transaction History
-
+				viewTransactionHistoryList(myTransactionHistoryList);
 				break;
 
 			case 0:		//Save and Exit
-
-				
+				myTransactionHistoryList.save(TH_FILE);
+				myCustomerList.save(CUS_FILE);
+				myInventoryList.save(INV_FILE);
+				myUserList.save(USR_FILE);
+				saveArray();				
 
 				isDone = true;
 
@@ -218,12 +227,15 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 		case SAL:
 
-			cout << "You have Sales Representative level access:" << endl;
+			cout << "You have Sales Representative level access." << endl;
+			cout << endl;
+
 			cout << "1. Make a Sale" << endl;
 			cout << "2. View Inventory List" << endl;
 			cout << "3. View Customer List" << endl;
 			cout << "4. View Transaction History" << endl;
 			cout << "0. Save and Exit." << endl;
+			cout << endl;
 
 			cout << "Please make a selection: " << endl;
 
@@ -232,21 +244,19 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 			switch (salesrepInput)
 			{
 			case 1:		//Make a sale
-
-				
-
+				makeAsale(myCustomerList, myInventoryList, myTransactionHistoryList, *activeUser);
 				break;
 
 			case 2:		//View Inventory List
-
+				viewInventoryList(myInventoryList);
 				break;
 
 			case 3:		//View Customer List
-
+				viewCustomerList(myCustomerList);
 				break;
 
 			case 4:		//View Transaction History
-
+				viewTransactionHistoryList(myTransactionHistoryList);
 				break;
 
 			case 0:		//Save and Exit
@@ -279,7 +289,7 @@ void addUser(Lists<Users>& myUserList)
 	char passwordChoice[MAX_LEN] = "";
 	char useridChoice[MAX_LEN] = "";
 
-	cout << "Please choose the type of user you would like to add:\n1. Admin\n2. Manager\n3. Sales Rep" << endl;
+	cout << "Please choose the type of user you would like to add:\n1. Admin\n2. Manager\n3. Sales Rep\n0. Return to Main Menu." << endl;
 
 	cin >> userTypeChoice;
 
@@ -287,74 +297,82 @@ void addUser(Lists<Users>& myUserList)
 	{
 	case 1:
 
-		cout << "Please enter the username for the User:" << endl;
+		system("cls");
+		cout << "Please enter the username for the Admin:" << endl;
 
 		//displayArray();
 
 		cin >> usernameChoice;
 
-		cout << "Please enter the user ID for the User:" << endl;
+		cout << "Please enter the user ID for the Admin:" << endl;
 
 		cin >> useridChoice;
 
-		cout << "Please enter the password for the User:" << endl;
+		cout << "Please enter the password for the Admin:" << endl;
 
 		cin >> passwordChoice;
 
 
 		myUserList.addToList(new Admin(usernameChoice, passwordChoice, useridChoice));
 
+		system("cls");
 		cout << "\nUser succesfully Added." << endl;
-
-		/*myUserList.printingFunction(printUser);
-
-		displayArray();*/
 
 		break;
 
 	case 2:
 
-		cout << "Please enter the username for the User:" << endl;
+		system("cls");
+		cout << "Please enter the username for the Manager:" << endl;
 
 		//displayArray();
 
 		cin >> usernameChoice;
 
-		cout << "Please enter the user ID for the User:" << endl;
+		cout << "Please enter the user ID for the Manager:" << endl;
 
 		cin >> useridChoice;
 
-		cout << "Please enter the password for the User:" << endl;
+		cout << "Please enter the password for the Manager:" << endl;
 
 		cin >> passwordChoice;
 
 		myUserList.addToList(new Manager(usernameChoice, passwordChoice, useridChoice));
-
+		
+		system("cls");
 		cout << "\nUser succesfully Added." << endl;
-
+		
 		break;
 
 	case 3:
 
-		cout << "Please enter the username for the User:" << endl;
+		system("cls");
+		cout << "Please enter the username for the Sales Rep:" << endl;
 
 		//displayArray();
 
 		cin >> usernameChoice;
 
-		cout << "Please enter the user ID for the User:" << endl;
+		cout << "Please enter the user ID for the Sales Rep:" << endl;
 
 		cin >> useridChoice;
 
-		cout << "Please enter the password for the User:" << endl;
+		cout << "Please enter the password for the Sales Rep:" << endl;
 
 		cin >> passwordChoice;
 
 		myUserList.addToList(new SalesRep(usernameChoice, passwordChoice, useridChoice));
 
+		system("cls");
 		cout << "\nUser succesfully Added." << endl;
 
 		break;
+
+	case 0:
+
+		system("cls");
+		return;
+
 	}
 }
 
@@ -370,6 +388,7 @@ void removeUser(Lists<Users>& myUserList)
 
 	myUserList.removeFromList(removeUserChoice);
 
+	system("cls");
 	cout << "\nUser removed succesfully." << endl;
 
 
@@ -380,21 +399,25 @@ void viewUserList(Lists<Users>& myUserList)
 	cout << "List of Users" << endl;
 
 	myUserList.printingFunction(printUser);
+	cout << endl;
 }
 
 void viewCustomerList(Lists<Customer>& myCustomerList)
 {
 	myCustomerList.printingFunction(printCustomer);
+	cout << endl;
 }
 
 void viewInventoryList(Lists<Inventory>& myInventoryList)
 {
 	myInventoryList.printingFunction(printInventory);
+	cout << endl;
 }
 
 void viewTransactionHistoryList(Lists<TransactionHistory>& myTransactionHistoryList)
 {
 	myTransactionHistoryList.printingFunction(printTransaction);
+	cout << endl;
 }
 
 void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryList, Lists<TransactionHistory>& myTransactionHistoryList, Users& user)
@@ -428,7 +451,7 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 
 		cp = myCustomerList.getItemFromList(THCustomerChoice);
 
-		cout << "Customer " << cp->getFirstName() << "has been chosen." << endl;
+		cout << "Customer " << cp->getFirstName() << " has been chosen." << endl;
 		while (!isTrue)
 		{
 			cout << "Select Vehicle from Inventory" << endl;
@@ -551,12 +574,12 @@ void addInventory(Lists<Inventory>& myInventoryList)
 	bool isTrue = false;
 	while (!isTrue)
 	{
-		cout << "What is the make of the vehicle?";
+		cout << "What is the make of the vehicle: ";
 		cin >> inputMake;
 
 		if (!stringToCharArray(inputMake, make, MAX_LEN) || (!doesStringContainOnlyAndOptional(inputMake, LETTER, LETTER + SPACE)))
 		{
-			cout << "\n Sorry the vehicle make name does not fit our requirements. Try again" << endl;
+			cout << "\n Sorry the vehicle make name does not fit our requirements. Try again!" << endl;
 		}
 		else
 			isTrue = true;
@@ -564,12 +587,12 @@ void addInventory(Lists<Inventory>& myInventoryList)
 	isTrue = false;
 	while (!isTrue)
 	{
-		cout << "What is the model of the vehicle?";
+		cout << "What is the model of the vehicle: ";
 		cin >> inputModel;
 
 		if (!stringToCharArray(inputModel, model, MAX_LEN) || (!doesStringContainAnyOf(inputModel, LETTER + SPACE + NUMBER)))
 		{
-			cout << "\n Sorry the vehicle model name does not fit our requirements. Try again" << endl;
+			cout << "\n Sorry the vehicle model name does not fit our requirements. Try again!" << endl;
 		}
 		else
 			isTrue = true;
@@ -577,12 +600,12 @@ void addInventory(Lists<Inventory>& myInventoryList)
 	isTrue = false;
 	while (!isTrue)
 	{
-		cout << "What is the VIN of the vehicle?";
+		cout << "What is the VIN of the vehicle: ";
 		cin >> inputVIN;
 
 		if (!stringToCharArray(inputVIN, VIN, MAX_LEN) || !doesStringContainOnly(inputVIN, NUMBER))
 		{
-			cout << "\n Sorry the vehicle VIN does not fit our requirements. It should have only numbers. Try again" << endl;
+			cout << "\n Sorry the vehicle VIN does not fit our requirements. It should have only numbers. Try again!" << endl;
 		}
 		else
 			isTrue = true;
@@ -605,9 +628,9 @@ void addInventory(Lists<Inventory>& myInventoryList)
 		
 	}
 	isTrue = false;
-	cout << "What is the price?";
+	cout << "What is the price: ";
 	cin >> price;
-	cout << "\nWhat is the cost?";
+	cout << "\nWhat is the cost: ";
 	cin >> cost;
 	myInventoryList.addToList(new Inventory(make, model, VIN, label, price, cost));
 	system("cls");
