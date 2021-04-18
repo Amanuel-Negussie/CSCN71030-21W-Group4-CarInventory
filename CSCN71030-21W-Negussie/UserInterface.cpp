@@ -4,7 +4,6 @@
 using namespace std;
 
 void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myInventoryList, Lists<Customer>& myCustomerList, Lists<TransactionHistory>& myTransactionHistoryList) {
-
 	system("cls");
 	srand(time(NULL));
 
@@ -46,8 +45,8 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 	userType myUserType = activeUser->getUserType();
 
 	while (!isDone)
-
 	{
+	
 		switch (myUserType)
 		{
 		case ADM:
@@ -71,7 +70,7 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 			cin >> adminInput;
 
 			int userTypeChoice;
-
+			system("cls");
 
 			switch (adminInput)
 			{
@@ -94,17 +93,16 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 				break;
 
 			case 4:		//Add Inventroy
-				/*char make[MAX_LEN];
-				char model[MAX_LEN];
-				char VIN[MAX_LEN];
-				LABEL label;
-				int price;
-				int cost;*/
+			
+
+				addInventory(myInventoryList);
+
 
 
 				break;
 
 			case 5:		//Remove Inventory
+				removeInventory(myInventoryList);
 
 				break;
 
@@ -267,11 +265,9 @@ void mainMenu(Users* activeUser, Lists<Users>& myUserList, Lists<Inventory>& myI
 
 
 	}
+	
 	return;
-
-
-
-
+	
 }
 
 void addUser(Lists<Users>& myUserList)
@@ -409,21 +405,22 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 	int THInventoryChoice;
 
 
-
+	string inputFirstName, inputLastName; 
 	char firstName[FIRST_NAME_LEN];
 	char lastName[LAST_NAME_LEN];
 	int age;
-
+	bool isTrue = false;
 
 	cout << "1. Select Existing Customer" << endl;
 	cout << "2. Create a new Customer" << endl;
 	cout << "0. Abort and Return Previous Menu" << endl;
 	cin >> transactionHistoryChoice;
-	Customer* cp; 
-	Inventory* ip; 
+	Customer* cp = NULL;
+	Inventory* ip = NULL;
 	switch (transactionHistoryChoice)
 	{
 	case 1:
+		isTrue = false;
 		cout << "Choose one of the following customers:" << endl;
 		myCustomerList.printingFunction(printCustomer);
 
@@ -432,24 +429,88 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 		cp = myCustomerList.getItemFromList(THCustomerChoice);
 
 		cout << "Customer " << cp->getFirstName() << "has been chosen." << endl;
-		cout << "Select Vehicle from Inventory" << endl;
-
-		myInventoryList.printingFunction(printInventory);
-
-		cin >> THInventoryChoice;
-		ip = myInventoryList.getItemFromList(THInventoryChoice);
+		while (!isTrue)
+		{
+			cout << "Select Vehicle from Inventory" << endl;
+			myInventoryList.printingFunction(printInventory);
+			cin >> THInventoryChoice;
+			ip = myInventoryList.getItemFromList(THInventoryChoice);
+			if (!ip)
+			{
+				cout << "Please enter a valid number from the inventory list." << endl;
+			}
+			else
+				isTrue = true;
+		}
+		isTrue = false;
 		ip->printInventory();
 		cout << endl;
 		myTransactionHistoryList.addToList(new TransactionHistory(RandInt(MIN_TRANSACTIONID, MAX_TRANSACTIONID), *ip, *cp, user));
 
 
-
-
-
-
-
 		break;
 	case 2:
+		isTrue = false;
+		while (!isTrue)
+		{
+			cout << "What is your customer's first name?";
+			cin >> inputFirstName;
+			if (!stringToCharArray(inputFirstName, firstName, FIRST_NAME_LEN))
+				cout << "Sorry that first name is too long please try again." << endl;
+			else
+				isTrue = true;
+		}
+		isTrue = false;
+		while (!isTrue)
+		{
+			cout << "\nWhat is your customer's last name?";
+			cin >> inputLastName;
+			if (!stringToCharArray(inputLastName, lastName, LAST_NAME_LEN))
+				cout << "Sorry that last name is too long please try again." << endl;
+			else
+				isTrue = true;
+		}
+		isTrue = false;
+
+		while (!isTrue)
+		{
+			cout << "\nWhat is your customer's age?";
+			cin >> age;
+			if (!isAgeValid(age))
+			{
+				cout << "Sorry, customer does not meet age requirements. (Age must be between 18-110 years)" << endl;
+			}
+			else
+				isTrue = true;
+		}
+		isTrue = false;
+		//make customer 
+		cp = new Customer(firstName, lastName, age);
+		myCustomerList.addToList(cp);
+		cout << "Successfully added " << cp->getFirstName() << " to our Customer List." << endl;
+		//choose from Inventory 
+		while (!isTrue)
+		{
+			cout << "Select Vehicle from Inventory" << endl;
+			myInventoryList.printingFunction(printInventory);
+			cin >> THInventoryChoice;
+			ip = myInventoryList.getItemFromList(THInventoryChoice);
+			if (!ip)
+			{
+				cout << "Please enter a valid number from the inventory list." << endl;
+			}
+			else
+				isTrue = true;
+		}
+	
+		cout <<cp->getFirstName()<< " has chosen Make:" << ip->getMake() << " and Model:" << ip->getModel() << endl;
+		myTransactionHistoryList.addToList(new TransactionHistory(RandInt(MIN_TRANSACTIONID, MAX_TRANSACTIONID), *ip, *cp, user));
+		myInventoryList.removeFromList(THInventoryChoice);
+
+
+
+		
+
 
 		break;
 	default:
@@ -459,6 +520,100 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 	}
 }
 
+void removeInventory(Lists<Inventory>& myInventoryList)
+{
+	cout << "Which Vehicle would you like to remove?" << endl;
+	bool isTrue = false;
+	int THInventoryChoice;
+	while (!isTrue)
+	{
+		cout << "Select Vehicle from Inventory" << endl;
+		myInventoryList.printingFunction(printInventory);
+		cin >> THInventoryChoice;
+		if (!myInventoryList.removeFromList(THInventoryChoice))
+			cout << "Sorry but that Inventory is not listed in our Inventory list." << endl;
+		else
+			isTrue = true;
+	}
+}
+
+void addInventory(Lists<Inventory>& myInventoryList)
+{
+	string inputMake, inputModel, inputVIN;
+	char make[MAX_LEN];
+	char model[MAX_LEN];
+	char VIN[MAX_LEN];
+	LABEL label;
+	int inputLabel;
+	int price;
+	int cost;
+
+	bool isTrue = false;
+	while (!isTrue)
+	{
+		cout << "What is the make of the vehicle?";
+		cin >> inputMake;
+
+		if (!stringToCharArray(inputMake, make, MAX_LEN) || (!doesStringContainOnlyAndOptional(inputMake, LETTER, LETTER + SPACE)))
+		{
+			cout << "\n Sorry the vehicle make name does not fit our requirements. Try again" << endl;
+		}
+		else
+			isTrue = true;
+	}
+	isTrue = false;
+	while (!isTrue)
+	{
+		cout << "What is the model of the vehicle?";
+		cin >> inputModel;
+
+		if (!stringToCharArray(inputModel, model, MAX_LEN) || (!doesStringContainAnyOf(inputModel, LETTER + SPACE + NUMBER)))
+		{
+			cout << "\n Sorry the vehicle model name does not fit our requirements. Try again" << endl;
+		}
+		else
+			isTrue = true;
+	}
+	isTrue = false;
+	while (!isTrue)
+	{
+		cout << "What is the VIN of the vehicle?";
+		cin >> inputVIN;
+
+		if (!stringToCharArray(inputVIN, VIN, MAX_LEN) || !doesStringContainOnly(inputVIN, NUMBER))
+		{
+			cout << "\n Sorry the vehicle VIN does not fit our requirements. It should have only numbers. Try again" << endl;
+		}
+		else
+			isTrue = true;
+	}
+	isTrue = false;
+
+	while (!isTrue)
+	{
+		cout << "What is the type of vehicle?" << endl;
+		cout << "1. Sedan\n2. SUV\n3. Truck\n4. Crossover\n5. RV" << endl;
+		cin >> inputLabel;
+		if (inputLabel >= Sedan && inputLabel <= RV)
+		{
+			label = (LABEL)inputLabel;
+			isTrue = true;
+		}
+		else
+		cout << "Choose a valid option." << endl;
+
+		
+	}
+	isTrue = false;
+	cout << "What is the price?";
+	cin >> price;
+	cout << "\nWhat is the cost?";
+	cin >> cost;
+	myInventoryList.addToList(new Inventory(make, model, VIN, label, price, cost));
+	system("cls");
+	cout << "THE INVENTORY BELOW HAS BEEN ADDED." << endl;
+	myInventoryList.getTailOfList()->getNodeData()->printInventory();
+}
 
 
 //
@@ -558,6 +713,9 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 //
 //
 //}
+
+
+	
 
 
 int RandInt(int min, int max)

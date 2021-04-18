@@ -30,9 +30,9 @@ void Lists<T>::addToList(T* object)
 }
 
 template<class T>
-void Lists<T>::removeFromList(int nthItem) {
+bool Lists<T>::removeFromList(int nthItem) {
 	if (nthItem <= 0 || nthItem > NumOfItems) {
-		return;
+		return false;
 	}
 
 	Node<T>* temp = head;
@@ -45,7 +45,7 @@ void Lists<T>::removeFromList(int nthItem) {
 			temp = temp->getNextNode();
 
 			if (temp == NULL) {
-				return;
+				return false;
 			}
 		}
 		Node<T>* target = temp->getNextNode();
@@ -61,6 +61,7 @@ void Lists<T>::removeFromList(int nthItem) {
 	}
 
 	NumOfItems--;
+	return true;
 }
 
 template<class T>
@@ -160,13 +161,14 @@ Node<T>* Lists<T>::getTailOfList() {
 template <class T>
 void Lists<T>::printingFunction(void(*printingFunction)(void*)){
 	int num = getNumOfItems() + 1;
-	setLastVisitedToHead();
+	
+	Node<T>* current = this->getHeadOfList();
 	for (int i = 1; i < num; i++) {
 		cout <<  i << ". ";
-		printingFunction(getLastVistedNodeData());
-		this->setLastVistedToNext();
+		printingFunction(current->getNodeData());
+		current = current->getNextNode();
 	}
-	setLastVisitedToNULL();
+	
 }
 
 

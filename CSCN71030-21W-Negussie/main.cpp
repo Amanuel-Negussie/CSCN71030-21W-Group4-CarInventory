@@ -17,7 +17,6 @@ using namespace std;
 
 int main (void) {
 
-
 	
 	//LOADING ARRAY AND SETTING UP ADMIN OR VERIFYING USER 
 	initializeElementsUserArray();

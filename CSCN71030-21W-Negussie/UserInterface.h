@@ -33,6 +33,10 @@ void viewUserList(Lists<Users>& myUserList);
 
 void viewCustomerList(Lists<Customer>& myCustomerList);
 
+void addInventory(Lists<Inventory>& myInventoryList);
+
+void removeInventory(Lists<Inventory>& myInventoryList);
+
 void viewInventoryList(Lists<Inventory>& myInventoryList);
 
 void viewTransactionHistoryList(Lists<TransactionHistory>& myTransactionHistoryList);

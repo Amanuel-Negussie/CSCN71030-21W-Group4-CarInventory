@@ -18,7 +18,7 @@ public:
 
 	Lists();
 	void addToList(T* object);		//Add an item to the end of a list
-	void removeFromList(int nthItem);	//Remove an item from anywhere of a list
+	bool removeFromList(int nthItem);	//Remove an item from anywhere of a list
 	T* getItemFromList(int nthItem);
 	T* getLastVistedNodeData();
 	void setLastVistedToNext();

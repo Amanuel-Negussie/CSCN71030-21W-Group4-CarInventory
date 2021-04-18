@@ -27,7 +27,7 @@ private:
 public:
 
 	Inventory();
-	Inventory(char[MAX_LEN], char[MAX_LEN], char[MAX_LEN], LABEL, int, int);//Parameterize
+	Inventory(char make[MAX_LEN], char model[MAX_LEN], char VIN[MAX_LEN], LABEL label, int price, int cost);//Parameterize
 	Inventory(Inventory&);//Copy constructor
 	void copy(Inventory& copyObject); //copy
 	~Inventory();//Destructor
