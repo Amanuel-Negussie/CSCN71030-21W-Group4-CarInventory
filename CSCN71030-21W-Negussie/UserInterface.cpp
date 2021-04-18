@@ -476,7 +476,7 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 		isTrue = false;
 		while (!isTrue)
 		{
-			cout << "What is your customer's first name?";
+			cout << "What is your customer's first name: ";
 			cin >> inputFirstName;
 			if (!stringToCharArray(inputFirstName, firstName, FIRST_NAME_LEN))
 				cout << "Sorry that first name is too long please try again." << endl;
@@ -486,7 +486,7 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 		isTrue = false;
 		while (!isTrue)
 		{
-			cout << "\nWhat is your customer's last name?";
+			cout << "\nWhat is your customer's last name: ";
 			cin >> inputLastName;
 			if (!stringToCharArray(inputLastName, lastName, LAST_NAME_LEN))
 				cout << "Sorry that last name is too long please try again." << endl;
@@ -497,7 +497,7 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 
 		while (!isTrue)
 		{
-			cout << "\nWhat is your customer's age?";
+			cout << "\nWhat is your customer's age: ";
 			cin >> age;
 			if (!isAgeValid(age))
 			{
@@ -637,109 +637,6 @@ void addInventory(Lists<Inventory>& myInventoryList)
 	cout << "THE INVENTORY BELOW HAS BEEN ADDED." << endl;
 	myInventoryList.getTailOfList()->getNodeData()->printInventory();
 }
-
-
-//
-//	cout << "----- Create Sale -----" << endl;
-//	cout << "1. Select Customer" << endl;
-//	cout << "2. Select Inventory" << endl;
-//	cout << "3. Confirm " << endl;
-//	cout << "0. Abort and Return Main Menu" << endl;
-//
-//	cin >> transactionHistoryChoice;
-//	switch (transactionHistoryChoice)
-//	{
-//	case 1:
-//		cout << "1. Select Existing Customer" << endl;
-//		cout << "2. Create a new Customer" << endl;
-//		cout << "0. Abort and Return Previous Menu" << endl;
-//
-//
-//		cin >> transactionHistoryChoice;
-//		switch (transactionHistoryChoice)
-//		{
-//		case 1:
-//			cout << "Choose one of the following customers:" << endl;
-//			myCustomerList.printingFunction(printCustomer);
-//
-//			cin >> THCustomerChoice;
-//
-//			myCustomerList.getItemFromList(THCustomerChoice);
-//
-//			break;
-//
-//		case 2:
-//
-//			cout << "Please enter firstname:" << endl;
-//			cin >> firstName;
-//
-//			cout << "Please enter lastname:" << endl;
-//			cin >> lastName;
-//
-//			cout << "Please enter age:" << endl;
-//			cin >> age;
-//
-//
-//			myCustomerList.addToList(new Customer(firstName, lastName, age));
-//
-//
-//			break;
-//
-//		case 0:
-//
-//			break;
-//		}
-//	case 2:
-//		cout << "Select Vehicle from Inventory" << endl;
-//
-//		myInventoryList.printingFunction(printInventory);
-//
-//		cin >> THInventoryChoice;
-//
-//		myInventoryList.getItemFromList(THInventoryChoice);
-//
-//		break;
-//
-//	case 3:
-//
-//		myCustomerList.getTailOfList()->getNodeData()->printCustomer();
-//
-//		myInventoryList.getItemFromList(THInventoryChoice)->printInventory();
-//
-//		break;
-//
-//	case 0:
-//
-//		break;
-//
-//		//Choose existing customer
-//					//create new customer
-//					//choose inventory
-//
-//					//system("cls");
-//
-//					//----- Create Sale -----
-//					//Trans
-//					//Customer Information:
-//					//Inventory Information:
-//					//User
-//					//1. Select Customer
-//					//2. Select Inventory
-//					//3. Comfirm 
-//					//0. Abort and Return Main Menu
-//					//
-//
-//
-//
-//	}
-//
-//
-//
-//}
-
-
-	
-
 
 int RandInt(int min, int max)
 {
