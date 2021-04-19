@@ -6,13 +6,11 @@ using namespace std;
 #define VALID_MIN_AGE 18
 
 enum DataType {
-	NONE = 0x0,
 	NUMBER = 0x1,
 	SYMBOL = 0x2,
-	LETTER = 0x4,
-	LWCASE = 0x8,
-	UPCASE = 0x10,
-	SPACE = 0x20
+	LWCASE = 0x4,
+	UPCASE = 0x8,
+	SPACE = 0x10,
 };
 
 unsigned int stringContains(const string& s);

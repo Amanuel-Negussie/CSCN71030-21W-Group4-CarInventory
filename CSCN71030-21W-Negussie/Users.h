@@ -46,6 +46,7 @@ public:
 	char* getUserID();
 	userType getUserType();
 
+	string getUserTypeString();
 
 	void addArray();
 

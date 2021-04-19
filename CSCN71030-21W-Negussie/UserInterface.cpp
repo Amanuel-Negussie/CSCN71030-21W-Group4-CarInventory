@@ -284,11 +284,11 @@ void addUser(Lists<Users>& myUserList)
 {
 
 	int userTypeChoice;
-
+	string userNameInput, userIDInput, userPasswordInput;
 	char usernameChoice[MAX_LEN] = "";
 	char passwordChoice[MAX_LEN] = "";
 	char useridChoice[MAX_LEN] = "";
-
+	bool isValid = false;
 	cout << "Please choose the type of user you would like to add:\n1. Admin\n2. Manager\n3. Sales Rep\n0. Return to Main Menu." << endl;
 
 	cin >> userTypeChoice;
@@ -296,22 +296,51 @@ void addUser(Lists<Users>& myUserList)
 	switch (userTypeChoice)
 	{
 	case 1:
-
 		system("cls");
-		cout << "Please enter the username for the Admin:" << endl;
-
-		//displayArray();
-
-		cin >> usernameChoice;
-
-		cout << "Please enter the user ID for the Admin:" << endl;
-
-		cin >> useridChoice;
-
-		cout << "Please enter the password for the Admin:" << endl;
-
-		cin >> passwordChoice;
-
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the username for the Admin:" << endl;
+			//displayArray();
+			cin >> userNameInput;
+			if (!stringToCharArray(userNameInput, usernameChoice, MAX_LEN) || !doesStringContainOnly(userNameInput, UPCASE + LWCASE))
+			{
+				cout << "Your username should contain no spaces,numbers or spaces and letters and must be less than "<<MAX_LEN<<". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user ID for the Admin:" << endl;
+			cin >> userIDInput;
+			if (!stringToCharArray(userIDInput, useridChoice, MAX_LEN) || !doesStringContainAnyOf(userIDInput, UPCASE + LWCASE +NUMBER))
+			{
+				cout << "Your user id must only contain letters and numbers and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user password for the Admin:" << endl;
+			cin >> userPasswordInput;
+			if (!stringToCharArray(userPasswordInput, passwordChoice, MAX_LEN) || !doesStringContainOnly(userPasswordInput, LWCASE + UPCASE + SYMBOL + NUMBER))
+			{
+				cout << "Your user password must only contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 symbol and words must be less than " << MAX_LEN << " characters.\n Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
 
 		myUserList.addToList(new Admin(usernameChoice, passwordChoice, useridChoice));
 
@@ -323,19 +352,50 @@ void addUser(Lists<Users>& myUserList)
 	case 2:
 
 		system("cls");
-		cout << "Please enter the username for the Manager:" << endl;
-
-		//displayArray();
-
-		cin >> usernameChoice;
-
-		cout << "Please enter the user ID for the Manager:" << endl;
-
-		cin >> useridChoice;
-
-		cout << "Please enter the password for the Manager:" << endl;
-
-		cin >> passwordChoice;
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the username for the Manager:" << endl;
+			//displayArray();
+			cin >> userNameInput;
+			if (!stringToCharArray(userNameInput, usernameChoice, MAX_LEN) || !doesStringContainOnly(userNameInput, UPCASE + LWCASE))
+			{
+				cout << "Your username should contain no spaces,numbers or spaces and letters and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user ID for the Manager:" << endl;
+			cin >> userIDInput;
+			if (!stringToCharArray(userIDInput, useridChoice, MAX_LEN) || !doesStringContainAnyOf(userIDInput, UPCASE + LWCASE + NUMBER))
+			{
+				cout << "Your user id must only contain letters and numbers and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user password for the Manager:" << endl;
+			cin >> userPasswordInput;
+			if (!stringToCharArray(userPasswordInput, passwordChoice, MAX_LEN) || !doesStringContainOnly(userPasswordInput, LWCASE + UPCASE + SYMBOL + NUMBER))
+			{
+				cout << "Your user password must only contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 symbol and words must be less than " << MAX_LEN << " characters.\n Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
 
 		myUserList.addToList(new Manager(usernameChoice, passwordChoice, useridChoice));
 		
@@ -347,19 +407,50 @@ void addUser(Lists<Users>& myUserList)
 	case 3:
 
 		system("cls");
-		cout << "Please enter the username for the Sales Rep:" << endl;
-
-		//displayArray();
-
-		cin >> usernameChoice;
-
-		cout << "Please enter the user ID for the Sales Rep:" << endl;
-
-		cin >> useridChoice;
-
-		cout << "Please enter the password for the Sales Rep:" << endl;
-
-		cin >> passwordChoice;
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the username for the Sales Representative:" << endl;
+			//displayArray();
+			cin >> userNameInput;
+			if (!stringToCharArray(userNameInput, usernameChoice, MAX_LEN) || !doesStringContainOnly(userNameInput, UPCASE + LWCASE))
+			{
+				cout << "Your username should contain no spaces,numbers or spaces and letters and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user ID for the Sales Representative:" << endl;
+			cin >> userIDInput;
+			if (!stringToCharArray(userIDInput, useridChoice, MAX_LEN) || !doesStringContainAnyOf(userIDInput, UPCASE + LWCASE + NUMBER))
+			{
+				cout << "Your user id must only contain letters and numbers and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user password for the Sales Representative:" << endl;
+			cin >> userPasswordInput;
+			if (!stringToCharArray(userPasswordInput, passwordChoice, MAX_LEN) || !doesStringContainOnly(userPasswordInput, LWCASE + UPCASE + SYMBOL + NUMBER))
+			{
+				cout << "Your user password must only contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 symbol and words must be less than " << MAX_LEN << " characters.\n Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
 
 		myUserList.addToList(new SalesRep(usernameChoice, passwordChoice, useridChoice));
 
@@ -577,7 +668,7 @@ void addInventory(Lists<Inventory>& myInventoryList)
 		cout << "What is the make of the vehicle: ";
 		cin >> inputMake;
 
-		if (!stringToCharArray(inputMake, make, MAX_LEN) || (!doesStringContainOnlyAndOptional(inputMake, LETTER, LETTER + SPACE)))
+		if (!stringToCharArray(inputMake, make, MAX_LEN) || (!doesStringContainOnlyAndOptional(inputMake, UPCASE + LWCASE, SPACE)))
 		{
 			cout << "\n Sorry the vehicle make name does not fit our requirements. Try again!" << endl;
 		}
@@ -590,7 +681,7 @@ void addInventory(Lists<Inventory>& myInventoryList)
 		cout << "What is the model of the vehicle: ";
 		cin >> inputModel;
 
-		if (!stringToCharArray(inputModel, model, MAX_LEN) || (!doesStringContainAnyOf(inputModel, LETTER + SPACE + NUMBER)))
+		if (!stringToCharArray(inputModel, model, MAX_LEN) || (!doesStringContainAnyOf(inputModel, LWCASE + UPCASE + SPACE + NUMBER)))
 		{
 			cout << "\n Sorry the vehicle model name does not fit our requirements. Try again!" << endl;
 		}

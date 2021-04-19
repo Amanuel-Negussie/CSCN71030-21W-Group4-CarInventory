@@ -19,7 +19,7 @@ int main (void) {
 	//LOADING ARRAY AND SETTING UP ADMIN OR VERIFYING USER 
 	initializeElementsUserArray();
 
-	string userNameInput, userPasswordInput;
+	string userNameInput, userPasswordInput, userIDInput;
 	char UserName[MAX_LEN];
 	char UserPassword[MAX_LEN];
 	if (!loadArray())
@@ -35,13 +35,50 @@ int main (void) {
 		cout << endl;
 		cout << "Let's set up your new Administrator!" << endl;
 		cout << endl;
-
-		cout << "Please enter the username for the Admin:" << endl;
-		cin >> usernameChoice;
-		cout << "Please enter the user ID for the Admin:" << endl;
-		cin >> useridChoice;
-		cout << "Please enter the password for the Admin:" << endl;
-		cin >> passwordChoice;
+		bool isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the username for the Admin:" << endl;
+			//displayArray();
+			cin >> userNameInput;
+			if (!stringToCharArray(userNameInput, usernameChoice, MAX_LEN) || !doesStringContainOnly(userNameInput, UPCASE + LWCASE))
+			{
+				cout << "Your username should contain no spaces,numbers or spaces and letters and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user ID for the Admin:" << endl;
+			cin >> userIDInput;
+			if (!stringToCharArray(userIDInput, useridChoice, MAX_LEN) || !doesStringContainAnyOf(userIDInput, UPCASE + LWCASE + NUMBER))
+			{
+				cout << "Your user id must only contain letters and numbers and must be less than " << MAX_LEN << ". Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
+		while (!isValid)
+		{
+			cout << "Please enter the user password for the Admin:" << endl;
+			cin >> userPasswordInput;
+			if (!stringToCharArray(userPasswordInput, passwordChoice, MAX_LEN) || !doesStringContainOnly(userPasswordInput, LWCASE + UPCASE + SYMBOL + NUMBER))
+			{
+				cout << "Your user password must only contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 symbol and words must be less than " << MAX_LEN << " characters.\n Try again." << endl;
+			}
+			else
+			{
+				isValid = true;
+			}
+		}
+		isValid = false;
 		
 		myUserList.addToList(new Admin(usernameChoice, passwordChoice, useridChoice));
 		myUserList.save(USR_FILE);

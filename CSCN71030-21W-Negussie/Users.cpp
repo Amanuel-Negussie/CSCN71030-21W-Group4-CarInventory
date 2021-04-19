@@ -31,7 +31,7 @@ void Users::displayUser()
 void printUser(void* user)
 {
 	Users* temp = (Users*)user;
-	cout << "\nUsername: " << temp->getUsername() << "\nUserId: " << temp->getUserID() << "\nUser Type: " << temp->getUserType() << endl;
+	cout << "\nUsername: " << temp->getUsername() << "\nUserId: " << temp->getUserID() << "\nUser Type: " << temp->getUserTypeString() << endl;
 }
 
 void Users::changeUsername(char name[MAX_LEN])
@@ -114,6 +114,28 @@ char* Users::getUserID()
 userType Users::getUserType()
 {
 	return this->type;
+}
+
+
+string Users::getUserTypeString()
+{
+	switch (type)
+	{
+	case ADM:
+		return "Adminstrator";
+		break;
+	case MNG:
+		return "Manager";
+		break;
+	case SAL:
+		return "Sales Representative";
+		break;
+	case UNSET:
+		return "Unset";
+		break;
+	default:
+		return "default";
+	}
 }
 
 Admin::Admin()

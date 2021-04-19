@@ -9,17 +9,21 @@ unsigned int stringContains(const string& s){
 		if ((stringContain & NUMBER) == 0 && s[i] >= '0' && s[i] <= '9') {
 			stringContain += NUMBER;
 		}
-		else if ((stringContain & SYMBOL) == 0 && s[i] == '&') {
+		else if ((stringContain & SYMBOL) == 0 && (s[i] >= '!' && s[i] <='/' || s[i]>=':' && s[i] <= '@')) {
 			stringContain += SYMBOL;
 		}
-		else if ((stringContain & LETTER) == 0 && (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z')) {
-			stringContain += LETTER;
+		else if ((stringContain & UPCASE) == 0 && (s[i] >= 'A' && s[i] <= 'Z'))
+		{
+			stringContain += UPCASE;
+		}
+		else if ((stringContain & LWCASE) == 0 && (s[i] >= 'a' && s[i] <= 'z'))
+		{
+			stringContain += LWCASE;
 		}
 		else if ((stringContain & SPACE) == 0 && s[i] == ' ') {
 			stringContain += SPACE;
 		}
 	}
-
 	return stringContain;
 }
 
