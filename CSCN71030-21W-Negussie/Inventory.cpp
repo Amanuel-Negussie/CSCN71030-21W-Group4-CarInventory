@@ -135,7 +135,7 @@ void Inventory::printInventory(void) {
 	cout << "VIN: " << this->VIN << endl;
 	labelToString(this->label);
 	cout << "Price: " << this->price << endl;
-	cout << "Cost: " << this->cost << endl;
+	cout << "Cost: " << this->cost << endl << endl;
 
 }
 
@@ -148,7 +148,7 @@ void printInventory(void* inventory) {
 	cout << "VIN: " << temp->getVIN() << endl;	
 	temp->labelToString(temp->getLabel());
 	cout << "Price: " << temp->getPrice() << endl;
-	cout << "Cost: " << temp->getCost() << endl;
+	cout << "Cost: " << temp->getCost() << endl<<endl;
 
 }
 

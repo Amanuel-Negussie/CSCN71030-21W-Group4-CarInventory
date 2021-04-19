@@ -25,7 +25,7 @@ void Users::copy(Users& copyObject) {
 
 void Users::displayUser()
 {
-	cout << "\nUsername: " << this->username << "\nUserId: " << this->userid << "\nUser Type: " << this->type << endl;
+	cout << "\nUsername: " << this->username << "\nUserId: " << this->userid << "\nUser Type: " << this->getUserTypeString() << endl;
 }
 
 void printUser(void* user)

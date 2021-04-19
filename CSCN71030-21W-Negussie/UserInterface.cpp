@@ -487,26 +487,31 @@ void removeUser(Lists<Users>& myUserList)
 
 void viewUserList(Lists<Users>& myUserList)
 {
-	cout << "List of Users" << endl;
-
+	system("cls");
+	cout << "This is the Users List:" << endl;
 	myUserList.printingFunction(printUser);
 	cout << endl;
 }
 
 void viewCustomerList(Lists<Customer>& myCustomerList)
 {
+	system("cls");
+	cout << "This is the Customer List:" << endl;
 	myCustomerList.printingFunction(printCustomer);
 	cout << endl;
 }
 
 void viewInventoryList(Lists<Inventory>& myInventoryList)
 {
+	system("cls");
+	cout << "This is the Inventory List:" << endl;
 	myInventoryList.printingFunction(printInventory);
 	cout << endl;
 }
 
 void viewTransactionHistoryList(Lists<TransactionHistory>& myTransactionHistoryList)
 {
+	cout << "This is the Transaction History List:" << endl;
 	myTransactionHistoryList.printingFunction(printTransaction);
 	cout << endl;
 }
@@ -668,7 +673,7 @@ void addInventory(Lists<Inventory>& myInventoryList)
 		cout << "What is the make of the vehicle: ";
 		cin >> inputMake;
 
-		if (!stringToCharArray(inputMake, make, MAX_LEN) || (!doesStringContainOnlyAndOptional(inputMake, UPCASE + LWCASE, SPACE)))
+		if (!stringToCharArray(inputMake, make, MAX_LEN) || (!doesStringContainAnyOf(inputMake, UPCASE + LWCASE + SPACE)))
 		{
 			cout << "\n Sorry the vehicle make name does not fit our requirements. Try again!" << endl;
 		}
