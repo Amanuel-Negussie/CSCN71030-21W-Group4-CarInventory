@@ -511,6 +511,7 @@ void viewInventoryList(Lists<Inventory>& myInventoryList)
 
 void viewTransactionHistoryList(Lists<TransactionHistory>& myTransactionHistoryList)
 {
+	system("cls");
 	cout << "This is the Transaction History List:" << endl;
 	myTransactionHistoryList.printingFunction(printTransaction);
 	cout << endl;
@@ -565,7 +566,9 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 		ip->printInventory();
 		cout << endl;
 		myTransactionHistoryList.addToList(new TransactionHistory(RandInt(MIN_TRANSACTIONID, MAX_TRANSACTIONID), *ip, *cp, user));
-
+		myInventoryList.removeFromList(THInventoryChoice);
+		system("cls");
+		cout << "Transaction has been completed." << endl;
 
 		break;
 	case 2:
@@ -625,7 +628,8 @@ void makeAsale(Lists<Customer>& myCustomerList, Lists<Inventory>& myInventoryLis
 		cout <<cp->getFirstName()<< " has chosen Make:" << ip->getMake() << " and Model:" << ip->getModel() << endl;
 		myTransactionHistoryList.addToList(new TransactionHistory(RandInt(MIN_TRANSACTIONID, MAX_TRANSACTIONID), *ip, *cp, user));
 		myInventoryList.removeFromList(THInventoryChoice);
-
+		system("cls");
+		cout << "Transaction has been completed." << endl;
 
 
 		
