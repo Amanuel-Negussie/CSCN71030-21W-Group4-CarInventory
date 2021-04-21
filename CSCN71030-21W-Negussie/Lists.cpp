@@ -72,7 +72,7 @@ T* Lists<T>::getItemFromList(int nthItem) {
 
 	Node<T>* temp = head;
 
-	for (int i = 1; i < nthItem - 1; i++) {
+	for (int i = 1; i < nthItem; i++) {
 		temp = temp->getNextNode();		
 	}
 	return temp->getNodeData();
